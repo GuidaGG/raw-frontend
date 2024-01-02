@@ -8,7 +8,7 @@
 <div class="app">
 	<Header />
 
-	<main>
+	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
 	<footer class="text-white bg-raw-blue px-5">

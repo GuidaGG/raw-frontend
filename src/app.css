@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-    @apply text-raw-blue text-xl
+    @apply text-raw-blue text-2xl
 }
