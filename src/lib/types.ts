@@ -45,7 +45,8 @@ export type ProjectsSection = {
 
 export type TextSection = { 
     __typename: string;
-    content: HTMLElement;
+    body: HTMLElement;
+    title: string;
 }
 
 export type GallerySection = {

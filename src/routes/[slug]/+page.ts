@@ -13,19 +13,6 @@ const viewsQuery = gql`
                     slug
                     dynamic_content {
                         __typename
-                        ... on ComponentDynamicGallery {
-                            images {
-                                data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
-                                    }
-                                }
-                            }
-                        }
                         ... on ComponentDynamicJoker {
                             title
                             subtitle
@@ -69,8 +56,9 @@ const viewsQuery = gql`
                             }
                         }
                      	... on ComponentDynamicText {
-                            content
-                          	style
+                            title
+                            body
+
                         }
                         ... on ComponentDynamicProjects {
                             show_all
