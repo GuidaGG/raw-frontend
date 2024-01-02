@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 body {
-    @apply text-raw-blue text-2xl
+    @apply text-raw-blue text-2xl 
+}
+
+p, h1, h2, h3, h4, h5, a { 
+    @apply text-raw-blue pb-5
+}
+
+a, .prose a {
+    @apply text-raw-blue
 }

@@ -6,4 +6,6 @@ let page = data.content.views[0]
 
 </script>
 
-<DynamicContent {page}/>
+<div class="bg-raw-blue p-5">
+    <DynamicContent {page}/>
+</div>
