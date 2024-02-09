@@ -21,17 +21,6 @@ const viewsQuery = gql`
                               name
                               url
                             }
-                            player {
-                                data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
-                                }
-                                }
-                            }
                             video {
                                 data {
                                 id 
