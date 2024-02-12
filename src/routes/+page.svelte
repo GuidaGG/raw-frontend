@@ -2,12 +2,12 @@
 	import Button
 	 from '$lib/components/Button.svelte';
 	export let data
+	import { currentView } from '$lib/store.js';
 
 	let views = data.content.views
 
-	const randomclass = () => {
-		return ``
-	}
+	currentView.set({title: '', url: ''});
+
 </script>
 
 <svelte:head>
@@ -16,7 +16,8 @@
 </svelte:head>
 
 <section class="p-5">
-	<div class="py-10">
+
+	<div class="pt-10 pb-16">
 		<h1 class="text-center">Welcome to researchandwaves.net!</h1>
 		<h2 class="text-center">Kindly let us know who you would like to be (today):</h2>
 	</div>
@@ -24,7 +25,7 @@
 		{#each views as view}
 		
 				<Button margin>
-						<a href="/{view.slug}">
+						<a href="/views/{view.slug}">
 					{view.title}
 					</a>
 				</Button>

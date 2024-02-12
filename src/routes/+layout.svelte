@@ -8,19 +8,24 @@
 <div class="app">
 	<Header />
 
-	<main class="min-h-[calc(100vh-144px)]">
+	<main class="min-h-[calc(100vh-144px)] ">
 		<slot />
 	</main>
-	<footer class="text-white bg-raw-blue px-5">
+	<div class="bg-red-300 w-full">
+		audio player - probably needs to be hidden on main page but stays on the otehrs
+	</div>
+	<footer class="text-white bg-raw-blue p-5">
+		
 		<div class="flex justify-between">
 		
 			<span>{currentYear}</span>
-			<nav class="list-none flex gap-2">
+			<nav class="list-none flex gap-2 text-sm">
 				<li>
-					<a href="/impressum">impressum</a>
+					<a class="text-white" href="/impressum">impressum</a>
 				</li>
+				<li>|</li>
 				<li>
-					<a href="/datenschutz">datenschutz</a>
+					<a class="text-white" href="/datenschutz">datenschutz</a>
 				</li>
 			</nav>
 		</div>

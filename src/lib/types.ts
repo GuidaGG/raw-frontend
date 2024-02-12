@@ -30,8 +30,7 @@ export type JokerSection= {
     subtitle: string;
     content: string;
     links: Link[];
-    player: Media[];
-    vide: Media;
+    video: Media;
     image: Media;
 }
 
