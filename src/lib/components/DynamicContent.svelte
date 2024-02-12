@@ -16,6 +16,4 @@
         {:else if section.__typename === "ComponentDynamicList"}
            list
         {/if}
-    
     {/each}
-    

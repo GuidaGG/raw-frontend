@@ -33,8 +33,10 @@ h3 {
 
 
 a, .prose a {
-    @apply text-raw-blue
+    @apply text-raw-blue underline underline-offset-2 hover:font-bold
 }
+
+
 
 .uppercase {
     @apply tracking-tighter
