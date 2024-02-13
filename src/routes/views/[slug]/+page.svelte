@@ -4,7 +4,8 @@
 
     export let data;
 
-    let page = data.content.views[0]
+    let page = data.content?.views[0];
+    let projects = data.allProjects.projects;
 
     const view = {
         title: page.title, url: page.slug
@@ -13,5 +14,5 @@
 </script>
 
 <div class="grainy-gradient p-5">
-    <DynamicContent {page}/>
+    <DynamicContent {page} {projects}/> 
 </div>
