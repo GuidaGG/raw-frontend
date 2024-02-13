@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+ 
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+  }
+}
+
 html {
     font-size:18px
 }
@@ -32,7 +43,7 @@ h3 {
 
 
 
-a, .prose a {
+not:button a, main a, .prose a {
     @apply text-raw-blue underline underline-offset-2 hover:font-bold
 }
 

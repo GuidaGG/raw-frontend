@@ -40,6 +40,7 @@ export type LinksSection = {
 
 export type ProjectsSection = {
     show_all: boolean;
+    projects: Project[];
 }
 
 export type TextSection = { 
@@ -81,4 +82,23 @@ export type View = {
     title: string;
     slug: string;
     dynamic_content: PageContents[]
+}
+
+export type ProjectCategory = {
+    name: string;
+    slug:string;
+}
+
+export type Project = {
+    title: string;
+    subtitle: string;
+    description: HTMLElement;
+    slug: string;
+    year: number;
+    image: Media;
+    collaborations: Link[];
+    place: Link[]
+    links: Link[]
+    project_categories: ProjectCategory[];
+
 }

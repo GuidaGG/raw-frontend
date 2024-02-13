@@ -24,7 +24,7 @@ export function flattenJson(json: any): any {
     const result: Record<string, any> = {};
  
     for (const key in json) {
-        console.log(key)
+      
       if (json.hasOwnProperty(key)) {
       
         result[key] = flattenJson(json[key]);
@@ -33,3 +33,21 @@ export function flattenJson(json: any): any {
   
     return result;
   }
+
+  export const hasValue = (jsonObj: any, value: string) => {
+
+    for (var key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+          if (typeof jsonObj[key] === 'object') {
+            if (hasValue(jsonObj[key], value)) { 
+              return true; 
+            }
+          } else {
+            if(jsonObj[key] === value){
+              return true;
+            }
+          }
+      }
+    }
+    return false;
+  };
