@@ -8,6 +8,7 @@
 
 </script>
 
+<div class="max-w-screen-2xl">
     {#each page.dynamic_content as section}
         {#if section.__typename === "ComponentDynamicText"}
             <TextSection {section}/>
@@ -19,3 +20,4 @@
            list
         {/if}
     {/each}
+</div>

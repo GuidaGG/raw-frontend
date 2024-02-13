@@ -47,9 +47,9 @@
         <div class="relative overflow-hidden ">
             <div class="flex flex-row transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar w-auto " bind:this={container}>
                 {#each listProjects as project}
-                    <div class="w-5/6 md:w-3/4 shrink-0">
+                    <div class="w-5/6 md:w-3/4 shrink-0 h-[70vh] overflow-auto">
                         <a href="/projects/{project.slug}" >
-                        <Image image={project.image} size="large" class="pr-20 border-t border-b border-raw-blue" />
+                        <Image image={project.image} size="large" class="pr-20 border-t border-b border-raw-blue object-cover w-full  max-h-[70vh]" />
                             
                         </a>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="w-3/4 shrink-0 border-t border-b border-raw-blue"></div>
             </div>
         </div>
-    <div class="p-5 flex wp-full justify-between flex-col-reverse  md:flex-row gap-5">
+    <div class="p-5 flex wp-full justify-between flex-col-reverse  md:flex-row gap-5 h-48 ">
         <div class="w-full md:w-3/4 shrink-0 ">
             <h3 class="text-xl pb-0">{active.title}</h3>
             <div class="flex gap-2 text-xs">
