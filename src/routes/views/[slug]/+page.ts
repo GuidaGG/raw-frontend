@@ -17,6 +17,7 @@ const viewsQuery = gql`
                             title
                             subtitle
                             content
+                            align
                             links { 
                               name
                               url
@@ -47,6 +48,7 @@ const viewsQuery = gql`
                      	... on ComponentDynamicText {
                             title
                             body
+                            align_text
 
                         }
                         ... on ComponentDynamicProjects {
@@ -59,12 +61,8 @@ const viewsQuery = gql`
                                 }
                               }
                             }
+                            layout
                         }
-                      	... on ComponentDynamicList {
-                            type
-                        }
-                      
-                      
 
                     }
                 }

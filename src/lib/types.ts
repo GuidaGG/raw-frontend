@@ -32,6 +32,7 @@ export type JokerSection= {
     links: Link[];
     video: Media;
     image: Media;
+    align: string;
 }
 
 export type LinksSection = {
@@ -41,12 +42,14 @@ export type LinksSection = {
 export type ProjectsSection = {
     show_all: boolean;
     projects: Project[];
+    layout: string;
 }
 
 export type TextSection = { 
     __typename: string;
     body: HTMLElement;
     title: string;
+    align_text: string;
 }
 
 export type GallerySection = {
