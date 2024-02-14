@@ -7,7 +7,7 @@
     </script>
     
 
-    <div class=" bg-white my-10 w-2/3 max-w-screen-lg space-y-10 pb-10">
+    <div class=" bg-white my-10 w-full md:w-2/3 max-w-screen-lg space-y-10 pb-10 {section.align}">
         {#if section.image}
            <Image image={section.image}/>
         {/if}

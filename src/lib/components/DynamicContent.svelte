@@ -8,7 +8,7 @@
 
 </script>
 
-<div class="max-w-screen-2xl">
+<div class="max-w-screen-2xl mx-auto">
     {#each page.dynamic_content as section}
         {#if section.__typename === "ComponentDynamicText"}
             <TextSection {section}/>
