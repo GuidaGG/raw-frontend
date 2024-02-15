@@ -33,6 +33,7 @@ export type JokerSection= {
     video: Media;
     image: Media;
     align: string;
+    layout_joker: string;
 }
 
 export type LinksSection = {

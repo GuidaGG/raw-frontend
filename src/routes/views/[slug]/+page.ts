@@ -18,6 +18,7 @@ const viewsQuery = gql`
                             subtitle
                             content
                             align
+                            layout_joker
                             links { 
                               name
                               url
