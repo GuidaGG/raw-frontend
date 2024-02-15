@@ -18,14 +18,14 @@
 <section class="p-5">
 
 	<div class="pb-16">
-		<h1 class="text-center">Welcome to researchandwaves.net!</h1>
-		<h2 class="text-center">Kindly let us know who you would like to be (today):</h2>
+		<h1 class="text-center normal-case">Welcome to researchandwaves.net!</h1>
+		<h2 class="text-center normal-case">Kindly let us know who you would like to be (today):</h2>
 	</div>
 	<div class="flex flex-col gap-10">
 		{#each views as view}
 		
 				<Button margin>
-						<a href="/views/{view.slug}">
+						<a  href="/views/{view.slug}">
 					{view.title}
 					</a>
 				</Button>

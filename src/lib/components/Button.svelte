@@ -3,18 +3,19 @@
     export let invert = false
 
     let random = margin ? `${40 * Math.random() + 20}%` : "auto"
-    let typeClass = invert ? "bg-raw-blue text-white" : "border-raw-blue"
+    let typeClass = invert ? "inverted bg-raw-blue text-raw-white hover:bg-raw-white " : "border-raw-blue hover:bg-raw-blue-light transition-all"
 </script>
 
-<div class="button border text-center px-20 rounded-3xl py-2 text-3xl uppercase max-w-full md:max-w-fit {typeClass}"  style="--margin: {random}">
+<button class="button border text-center  shadow-raw-blue shadow-inner sm:px-20 rounded-full py-2 text-xl sm:text-3xl uppercase max-w-full md:max-w-fit {typeClass}"  style="--margin: {random}">
     <slot />
-</div>
+</button>
 
 <style lang="postcss">
 @screen md {
     .button { 
         margin-left: var(--margin);
+        
     }
-}
+    }
 
 </style>

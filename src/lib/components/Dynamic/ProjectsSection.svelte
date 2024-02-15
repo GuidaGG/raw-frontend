@@ -2,6 +2,7 @@
     import type { Project, ProjectsSection } from "$lib/types";
     import Arrow from 'svelte-feathers/Play.svelte'
     import Image from "../Image.svelte";
+  import { getYear } from "$lib/utils";
     export let section: ProjectsSection
     export let projects: Project[]
 
@@ -43,24 +44,25 @@
     }
 </script>
 
-<div class="bg-white mb-10">
-        <div class="relative overflow-hidden ">
-            <div class="flex flex-row transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar w-auto " bind:this={container}>
-                {#each listProjects as project}
-                    <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto">
-                        <a href="/projects/{project.slug}" class="bg-pink-400" >
-                            <Image image={project.image} size="large" class="pr-5 md:pr-20 border-t border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
-                        </a>
-                    </div>
-                {/each}
-                <div class="w-3/4 shrink-0 border-t border-b border-raw-blue"></div>
-            </div>
+<!-- <pre>{JSON.stringify(listProjects, null, 2)}</pre> -->
+<div class="bg-raw-white">
+    <div class="relative overflow-hidden ">
+        <div class="flex flex-row transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar w-auto " bind:this={container}>
+            {#each listProjects as project}
+                <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto">
+                    <a href="/projects/{project.slug}" class="bg-pink-400" >
+                         <Image image={project.images[0]} size="large" class="pr-5 md:pr-20 border-t border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
+                    </a>
+                </div>
+            {/each}
+            <div class="w-3/4 shrink-0 border-t border-b border-raw-blue"></div>
         </div>
+    </div>
     <div class="p-5 flex wp-full md:justify-between flex-col-reverse md:flex-row gap-5 md:h-48 ">
         <div class="w-full md:w-3/4 shrink-0 ">
             <h3 class="text-xl pb-0">{active.title}</h3>
             <div class="flex gap-2 text-xs">
-                <span>{active.year}</span>
+                <span>{getYear(active.date)}</span>
                 <span>|</span>
                 {#each active.place as place}
                 <span>{place.name}</span>
@@ -77,4 +79,4 @@
             <Arrow on:click={next} class="focus:outline-1 focus:ring-none focus:outline-raw-blue" />
         </div>
     </div>
-</div>
+</div> 

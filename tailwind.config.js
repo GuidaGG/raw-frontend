@@ -9,6 +9,8 @@ export default {
     extend: {
       colors: {
         'raw-blue': '#5D96FF',
+        'raw-blue-light': '#96bcff',
+        'raw-white': '#E4E5E7'
       },
     }
   },

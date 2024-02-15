@@ -5,9 +5,8 @@
 
     export let section: JokerSection
     </script>
-    
 
-    <div class=" flex flex-col bg-white my-10 w-full gap-5  {section.align} {section.layout_joker}">
+    <div class=" flex flex-col bg-raw-white  w-full gap-5  {section.align} {section.layout_joker}">
         <div class="basis-1/2">
             {#if section.image}
             <Image image={section.image}/>
@@ -17,7 +16,7 @@
             {/if}
        </div>
        <div class="basis-1/2">
-            <div class="prose prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0 max-w-screen-lg bg-white">
+            <div class="prose  max-w-screen-lg bg-raw-white">
                 {#if section.title}
                     <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase">{ section.title}</h2>
                 {/if}
@@ -29,8 +28,8 @@
                 </div>
             </div>
             {#if section.links.length}
-            <ul class="bg-white px-5 text-sm mt-5">
-                <li class="font-bold">Links:</li>
+            <ul class="bg-raw-white px-5 text-sm mt-5">
+                <li class="font-medium">Links:</li>
                 {#each section.links as link}
                 <li>
                     <a href={link.url}>{link.name}</a>

@@ -32,7 +32,7 @@
 
 
 <div class="relative">
-    <div class="bg-white">
+    <div class="bg-raw-white">
         <video
             src={`${config.apiUrl}${video.url}`} 
             bind:this={player}

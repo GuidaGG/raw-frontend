@@ -82,8 +82,8 @@ const projectsQuery = gql`
                     subtitle
                     description
                     slug
-                    year
-                    image {
+                    date
+                    images {
                        data {
                           id 
                           attributes { 
@@ -94,15 +94,7 @@ const projectsQuery = gql`
                           }
                         }
                     }
-                    collaborations {
-                      name 
-                      url
-                    } 
                     place {
-                      name
-                      url
-                    }
-                    links {
                       name
                       url
                     }

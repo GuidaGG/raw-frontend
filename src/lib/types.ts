@@ -98,13 +98,14 @@ export type Project = {
     subtitle: string;
     description: HTMLElement;
     slug: string;
-    year: number;
+    date: string;
     coordinate: string;
-    image: Media;
+    images: Media[];
     collaborations: Link[];
     place: Link[]
     links: Link[]
     project_categories: ProjectCategory[];
     project_type: ProjectCategory;
+    funding: string;
 
 }

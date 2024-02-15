@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    @apply text-raw-blue text-2xl 
+    @apply text-raw-blue text-2xl bg-raw-white
 }
 
 p, h1, h2, h3, h4, h5, a { 
@@ -26,11 +26,11 @@ p, h1, h2, h3, h4, h5, a {
 }
 
 h1, h2, h3, h4, h5 {
-    @apply font-medium pb-2
+    @apply font-medium pb-2 uppercase
 }
 
 h1 {
-    @apply text-2xl
+    @apply text-4xl
 }
 
 h2 {
@@ -41,16 +41,31 @@ h3 {
     @apply text-base
 }
 
+.prose {
+    @apply prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0 bg-white prose-a:text-raw-blue
+}
 
-
-not:button a, main a, .prose a {
-    @apply text-raw-blue underline underline-offset-2 hover:font-bold
+not:button a {
+    @apply hover:underline-offset-2 hover:underline
 }
 
 
+not:button a, main a, .prose a {
+    @apply text-raw-blue underline underline-offset-2 hover:font-medium
+}
+
+.button:hover a{
+
+    @apply text-raw-white ;
+
+}
+
+.inverted:hover a{
+    @apply text-raw-blue ;
+}
 
 .uppercase {
-    @apply tracking-tighter
+    @apply tracking-wide
 }
 
 .grainy-gradient {
@@ -64,3 +79,4 @@ not:button a, main a, .prose a {
 .right {
     @apply ml-auto;
 }
+

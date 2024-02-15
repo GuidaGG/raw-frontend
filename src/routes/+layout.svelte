@@ -8,7 +8,7 @@
 <div class="app">
 	<Header />
 
-	<main class="min-h-[calc(100vh-144px)] py-10">
+	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
 	<div class="bg-red-300 w-full">

@@ -13,6 +13,6 @@
     currentView.set(view);
 </script>
 
-<div class="grainy-gradient p-2 md:p-5">
+<div class="grainy-gradient px-5 py-10">
     <DynamicContent {page} {projects}/> 
 </div>

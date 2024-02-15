@@ -14,19 +14,9 @@ const projectsQuery = gql`
                     subtitle
                     description
                     slug
-                    year
                     coordinate
-                    image {
-                       data {
-                          id 
-                          attributes { 
-                            url
-                            formats
-                            alternativeText
-                            name
-                          }
-                        }
-                    }
+                    date
+                    funding
                     collaborations {
                       name 
                       url
