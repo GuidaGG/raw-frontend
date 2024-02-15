@@ -29,36 +29,37 @@
     
 </script>
 
-<div class="max-w-screen-2xl mx-auto">
+<div class="max-w-screen-2xl mx-auto space-y-20 px-5">
 {#each Object.entries(sortedProjects) as [type, projects]}
 
-    <div>
-        <h3>{type}s</h3>
-        <table class="table-auto text-left border-spacing-4 text-base border-collapse">
+    <div class="space-y-5 relative">
+        <h3 class="text-base uppercase font-bold">{type}s</h3>
+        <table class="table-fixed text-left text-base border-collapse w-full">
             <thead>
                 <tr class="uppercase">
-                  <th>/COORDINATE</th>
-                  <th>/TITLE</th>
-                  <th>/CATEGORY</th>
+                  <th class="w-1/6 hidden sm:table-cell">/COORDINATE</th>
+                  <th class="w-4/5 sm:w-2/6">/TITLE</th>
+                  <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
                   {#if type === "Event"}
-                    <th>/VENUE</th>
+                    <th class="w-1/6 hidden md:table-cell">/VENUE</th>
                   {/if}
-                  <th>/DATE</th>
+                  <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"}">/DATE</th>
                 </tr>
               </thead>
               <tbody >
                 {#each projects as project}
                 <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->
+               
                 <tr>
-                    <td>{project.coordinate}</td>
-                    <td>{project.title}</td>
-                    <td>
+                    <td class="hidden sm:table-cell">{project.coordinate}</td>
+                    <td><a href="/projects/{project.title}">{project.title}</a></td>
+                    <td class="hidden sm:table-cell">
                     {#each project.project_categories as cat, index}
                        <span>{cat.name}</span>
                     {/each}
                     </td>
                     {#if type === "Event"}
-                        <td>
+                        <td class="hidden md:table-cell">
                         {#each project.place as place}
                             {#if place.url }
                                 <a href={place.url}>{place.name}</a>
@@ -70,16 +71,17 @@
                     {/if}
                     <td>{project.year}</td>
                     </tr>
+          
                 {/each}
               </tbody>
         </table>
     </div>
 {/each}
 
-    <div>
-        <h3>Network</h3>
-        <div class="flex gap-10">
-            <ul class="text-base">
+    <div class="space-y-5 w-full">
+        <h3 class="text-base uppercase font-bold">Network</h3>
+        <div class="flex flex-col sm:flex-row gap-5">
+            <ul class="text-base w-3/6">
                 <li class="uppercase font-bold">/People</li>
             {#each getFilteredValues(projects, "collaborations") as collab}
                 <li>
@@ -110,6 +112,11 @@
 
 <style type="postcss">
     th, td {
-        @apply px-5 xl:px-10 first:pl-0 last:pr-0;
+        @apply align-top ;
     }
+    table a {
+        @apply hover:underline-offset-2 hover:underline
+    }
+
+
 </style>

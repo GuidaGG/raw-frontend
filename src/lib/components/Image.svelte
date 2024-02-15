@@ -6,14 +6,15 @@
     export let size: "small" | "thumbnail" | "large" | "medium" | null = null
 
     
-    $: url = size != null && image.formats[size].url ? image.formats[size].url : image.url
+    let url = size != null && image?.formats[size]?.url ? image?.formats[size]?.url : image?.url 
     
     </script>
-    
+
+    {#if image}
     <img
         class={`object-cover w-full ${$$restProps.class}` }
         src={`${config.apiUrl}${url}`} 
         alt={image.alternativeText}
         loading="lazy"
     />
-    
+    {/if}

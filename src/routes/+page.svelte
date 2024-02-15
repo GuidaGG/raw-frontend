@@ -17,7 +17,7 @@
 
 <section class="p-5">
 
-	<div class="pt-10 pb-16">
+	<div class="pb-16">
 		<h1 class="text-center">Welcome to researchandwaves.net!</h1>
 		<h2 class="text-center">Kindly let us know who you would like to be (today):</h2>
 	</div>
