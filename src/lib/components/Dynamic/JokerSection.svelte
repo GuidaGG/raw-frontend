@@ -6,7 +6,7 @@
     export let section: JokerSection
     </script>
 
-    <div class=" flex flex-col bg-raw-white  w-full gap-5  {section.align} {section.layout_joker}">
+    <div class=" flex flex-col bg-raw-white  w-full gap-5  {section.align} {section.layout_joker} pb-10">
         <div class="basis-1/2">
             {#if section.image}
             <Image image={section.image}/>
@@ -47,7 +47,7 @@
    
         }
         .one_column {
-            @apply w-2/3 max-w-screen-lg
+            @apply w-full md:w-2/3 max-w-screen-lg
         }
 
     </style>
