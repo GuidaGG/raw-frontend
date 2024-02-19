@@ -7,3 +7,6 @@ export const currentView = writable(
     }
 );
 
+export const contact = writable({
+    info: ''
+})

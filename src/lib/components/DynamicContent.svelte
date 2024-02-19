@@ -3,6 +3,7 @@
     import TextSection from "./Dynamic/TextSection.svelte";
     import JokerSection from "./Dynamic/JokerSection.svelte";
     import ProjectsSection from "./Dynamic/ProjectsSection.svelte";
+     import Contact from "./Dynamic/Contact.svelte";
     export let page: View
     export let projects: Project[] = []
 
@@ -16,8 +17,8 @@
             <ProjectsSection {section} {projects} />
         {:else if section.__typename === "ComponentDynamicJoker"}
            <JokerSection {section}/>
-        {:else if section.__typename === "ComponentDynamicList"}
-           list
+        {:else if section.__typename === "ComponentDynamicContact"}
+           <Contact {section} />
         {/if}
     {/each}
 </div>

@@ -58,12 +58,19 @@ export type GallerySection = {
     images: Media[];
 }
 
+export type ContactSection = {
+    __typename: string;
+    title:  string;
+    subtitle: string;
+}
+
 export type PageSection =
  | JokerSection
  | LinksSection
  | ProjectsSection
  | TextSection 
  | GallerySection
+ | ContactSection
 
 
 export type Pagination= { 

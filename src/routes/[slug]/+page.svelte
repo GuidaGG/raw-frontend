@@ -4,7 +4,7 @@
 
     export let data
 
-    let page = data.content?.pages[0];
+    $: page = data.content?.pages[0];
 </script>
 
 <div class="bg-raw-white px-5 py-10">

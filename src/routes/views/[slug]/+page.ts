@@ -64,7 +64,10 @@ const viewsQuery = gql`
                             }
                             layout
                         }
-
+                        ... on ComponentDynamicContact {
+                          title 
+                          subtitle
+                        }
                     }
                 }
             }
@@ -112,7 +115,6 @@ const projectsQuery = gql`
         }
     }
 `
-
 
 export const load: import('./$types').PageLoad = (async ({ params }) => {
   try {
