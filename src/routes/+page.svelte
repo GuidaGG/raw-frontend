@@ -24,10 +24,9 @@
 	<div class="flex flex-col gap-10">
 		{#each views as view}
 		
-				<Button margin>
-						<a  href="/views/{view.slug}">
+				<Button margin link="/views/{view.slug}">
+				
 					{view.title}
-					</a>
 				</Button>
 
 		{/each}

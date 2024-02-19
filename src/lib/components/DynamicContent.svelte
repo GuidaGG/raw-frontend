@@ -4,7 +4,7 @@
     import JokerSection from "./Dynamic/JokerSection.svelte";
     import ProjectsSection from "./Dynamic/ProjectsSection.svelte";
     export let page: View
-    export let projects: Project[]
+    export let projects: Project[] = []
 
 </script>
 

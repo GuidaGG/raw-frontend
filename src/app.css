@@ -13,17 +13,14 @@
   }
 }
 
-@layer base {
 
     html {
-
         font-size:16px;
         @screen sm {  
             font-size:18px;
         }
-    }
     
-
+    }
 
     body {
         @apply text-raw-blue text-2xl bg-raw-white
@@ -53,20 +50,22 @@
         @apply prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0  prose-a:text-raw-blue 
     }
 
-    not:button a {
-        @apply hover:underline-offset-2 hover:underline
+    a {
+        @apply text-raw-blue hover:underline underline-offset-2 font-medium 
     }
 
+    .prose a {          
+        @apply hover:font-medium
+    }
+    a.button            {
+        @apply hover:text-raw-white hover:no-underline font-normal
 
-    not:button a, main a, .prose a {
-        @apply text-raw-blue underline underline-offset-2 hover:font-medium
     }
 
-    .button:hover a{
-        @apply text-raw-white ;
-
+    a {
+        @apply focus:outline-black focus:outline-4
     }
-
+                
     .inverted:hover a{
         @apply text-raw-blue ;
     }
@@ -76,15 +75,14 @@
     }
 
     .grainy-gradient {
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 5%, #5D96FF 40%, #5D96FF 100%);
+        background: linear-gradient(to bottom, #E4E5E7 0%, #E4E5E7 5%, #5D96FF 40%, #5D96FF 100%);
     }
 
+
     .center{
-        @apply mx-auto;
+        @apply mx-auto ;
     }
 
     .right {
         @apply ml-auto;
     }
-
-}

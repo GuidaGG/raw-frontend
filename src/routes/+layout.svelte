@@ -21,11 +21,11 @@
 			<span>{currentYear}</span>
 			<nav class="list-none flex gap-2 text-sm">
 				<li>
-					<a class="text-white" href="/impressum">impressum</a>
+					<a class="text-white" href="/legal-notice">legal notice</a>
 				</li>
 				<li>|</li>
 				<li>
-					<a class="text-white" href="/datenschutz">datenschutz</a>
+					<a class="text-white" href="/privacy-policy">privacy policy</a>
 				</li>
 			</nav>
 		</div>

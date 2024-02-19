@@ -32,12 +32,17 @@
 		</div>
 		<nav class=" sm:w-auto md:ml-auto list-none flex gap-2 justify-end md:justify-between items-center">
 			{#if buttonView.url }
-				<li class="border-r-2 border-raw-blue pr-3"><a href="/views/{buttonView.url}"><User /></a></li>
-		
+				<li class="border-r-2 border-raw-blue pr-3">
+					<a href="/views/{buttonView.url}" class="h-6 w-6">
+						<User tabindex="-1" class="h-6 w-6 focus:outline-none" />
+					</a>
+				</li>
 			{/if}
-			<li><a href="/projects">
-			<List />
-		</a></li>
+			<li>
+				<a href="/projects" class="h-6 w-6" >
+					<List tabindex="-1" class="h-6 w-6 focus:outline-none" />
+				</a>
+			</li>
 
 		</nav>
 	</div>
