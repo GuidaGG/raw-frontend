@@ -2,10 +2,12 @@
 	import Header from "$lib/components/Header.svelte";
 	import "../app.css";
 	import { contact } from "$lib/store";
+  	import Radio from "$lib/components/Radio.svelte";
 
 	export let data;
+
 	let currentYear = new Date().getFullYear();
-	
+	let radio = data.radio.projects;
 	const contactInfo = {
     	info: data.content.contact
     }
@@ -18,8 +20,8 @@
 	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
-	<div class="bg-red-300 w-full">
-		audio player - probably needs to be hidden on main page but stays on the otehrs
+	<div class=" w-full">
+		<Radio {radio}/>
 	</div>
 
 	<footer class="text-white bg-raw-blue p-5">

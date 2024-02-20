@@ -6,7 +6,7 @@ import { flattenJson } from '$lib/utils';
 
 const projectsQuery = gql`
      query getProjects{
-        projects(sort: [ "project_type.name:desc", "year" ]) {
+        projects(sort: [ "project_type.name:desc", "date" ]) {
             data{
                 id
                 attributes{ 
