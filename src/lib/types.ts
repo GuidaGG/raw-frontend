@@ -78,6 +78,40 @@ export type Pagination= {
     pageCount: number;
 }
   
+export type AudioFile = {
+    title: string;
+    audioFile: {
+      url: string;
+      formats: any[] | null;
+      alternativeText: string | null;
+      name: string;
+      id: string;
+    };
+    audioFile_download: {
+      url: string | null;
+      formats: any[] | null;
+      alternativeText: string | null;
+      name: string | null;
+      id: string;
+    } | null;
+    radio: boolean;
+  };
+
+export type AudioTrack = {
+    title: string;
+    artist: Collaboration[];
+    project: string;
+    file:  {
+        url: string;
+    }
+}
+  
+ export type Collaboration = {
+    name: string;
+    url: string | null;
+  };
+  
+
 
 // PAGE TYPES
 
@@ -102,17 +136,18 @@ export type ProjectCategory = {
 
 export type Project = {
     title: string;
-    subtitle: string;
-    description: HTMLElement;
+    subtitle?: string;
+    description?: HTMLElement;
     slug: string;
-    date: string;
-    coordinate: string;
-    images: Media[];
-    collaborations: Link[];
-    place: Link[]
-    links: Link[]
+    date?: string;
+    coordinate?: string;
+    images?: Media[];
+    collaborations: Collaboration[];
+    place?: Link[]
+    links?: Link[]
     project_categories: ProjectCategory[];
     project_type: ProjectCategory;
     funding: string;
+    audioFiles: AudioFile[];
 
 }
