@@ -21,12 +21,59 @@ const contactQuery = gql`
     }
 `
 
+const RadioQuery = gql`
+     query getAudios{
+        projects(sort: "title") {
+            data{
+                id
+                attributes{ 
+                    title
+                    slug
+                    audioFiles(filters: {radio: {eq: true}}) {
+                        title
+                        audioFile {
+                            data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                            }
+                        }
+                        audioFile_download {
+                            data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                            }
+                        }
+                     
+                        radio
+
+                    }
+                    collaborations {
+                            name 
+                            url
+                        } 
+                }
+            }
+        }
+    }
+`
+
 export const load: import('./$types').PageLoad = (async () => {
     try {
-        const dataGeneral = await client.request(contactQuery );
-
+        const dataGeneral = await client.request(contactQuery);
+        const dataRadio = await client.request(RadioQuery);
         return {
-            content: flattenJson(dataGeneral)
+            content: flattenJson(dataGeneral),
+            radio: flattenJson(dataRadio )
         }
     } catch (error) {
       console.error('Error fetching data:', error);

@@ -1,25 +1,33 @@
-<script>
+<script lang="ts">
 	import Header from "$lib/components/Header.svelte";
 	import "../app.css";
 	import { contact } from "$lib/store";
+  	import Radio from "$lib/components/Radio.svelte";
+	import { page } from "$app/stores";
 
 	export let data;
+
 	let currentYear = new Date().getFullYear();
-	
+	let radio = data.radio.projects;
 	const contactInfo = {
     	info: data.content.contact
     }
     contact.set(contactInfo);
 
-</script>
+	 const isInHomePage = (page): boolean => page.route?.id === "/";
+	const hasViewsSubpath = (page): boolean => page.route?.id === "/views/[slug]";
+
+	$: showPlaylist = hasViewsSubpath($page) 
+	$: hide = isInHomePage($page); 
+</script> 
 
 <div class="app">
 	<Header />
 	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
-	<div class="bg-red-300 w-full">
-		audio player - probably needs to be hidden on main page but stays on the otehrs
+	<div class="w-full">
+		<Radio {radio} {hide} {showPlaylist} />
 	</div>
 
 	<footer class="text-white bg-raw-blue p-5">
