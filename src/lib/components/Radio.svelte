@@ -111,7 +111,7 @@
 
 </script>  
 
- <div class=" bg-raw-white max-w-screen-2xl mx-auto border-raw-blue mt-10 border-t border-r border-l {hide ? 'hidden' : ''} {showPlaylist ? 'border-b w-full absolute top-20 md:top-40 left-1/2 -translate-x-1/2 mb-4 ' : ''}">
+ <div class="fixed w-full bottom-0 bg-raw-white  mx-auto border-raw-blue mt-10 border-t border-r border-l {hide ? 'hidden' : ''} {showPlaylist ? 'bottom-auto max-w-screen-2xl border-b w-full absolute top-14 md:top-40 left-1/2 -translate-x-1/2 mb-4 ' : ''}">
     <div class=" relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
         {#key loaded}
          <audio 

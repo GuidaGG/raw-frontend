@@ -30,11 +30,11 @@
 		<Radio {radio} {hide} {showPlaylist} />
 	</div>
 
-	<footer class="text-white bg-raw-blue p-5">
+	<footer class="text-white bg-raw-blue px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:pb-20': ''}">
 		
 		<div class="flex justify-between items-center">
 		
-			<span>{currentYear}</span>
+			<span class="text-base">{currentYear}</span>
 			<nav class="list-none flex gap-2 text-sm">
 				<li>
 					<a class="text-white" href="/legal-notice">legal notice</a>
