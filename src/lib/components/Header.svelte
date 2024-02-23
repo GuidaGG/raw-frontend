@@ -25,8 +25,10 @@
 				{#if buttonView.title}	
 					<Button 
 						invert
-						class="text-xs md:text-lde px-5">
+						link={`views/${buttonView.url}`}
+						class="text-xs md:text-xl px-5">
 						{buttonView.title}
+						
 					</Button>
 				{/if}
 		</div>

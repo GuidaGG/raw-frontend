@@ -16,7 +16,7 @@
             {/if}
        </div>
        <div class="basis-1/2">
-            <div class="prose  max-w-screen-lg bg-raw-white">
+            <div class="prose max-w-screen-lg bg-raw-white">
                 {#if section.title}
                     <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase">{ section.title}</h2>
                 {/if}
@@ -32,7 +32,7 @@
                 <li class="font-medium">Links:</li>
                 {#each section.links as link}
                 <li>
-                    <a href={link.url}>{link.name}</a>
+                    <a target="_blank" href={link.url}>{link.name}</a>
                 </li>
                 {/each}
             </ul>

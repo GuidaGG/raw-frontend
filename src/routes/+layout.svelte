@@ -26,11 +26,8 @@
 	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
-	<div class="w-full">
-		<Radio {radio} {hide} {showPlaylist} />
-	</div>
 
-	<footer class="text-white bg-raw-blue px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:pb-20': ''}">
+	<footer class="text-white bg-raw-blue px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
 		
 		<div class="flex justify-between items-center">
 		
@@ -47,6 +44,9 @@
 		</div>
 		
 	</footer>
+	<div class="w-full">
+		<Radio {radio} {hide} {showPlaylist} />
+	</div>
 
 </div>
 

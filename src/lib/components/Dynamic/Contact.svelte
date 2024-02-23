@@ -28,7 +28,7 @@
             </div>
             <div class="flex gap-4 text-sm">
             {#each contactInfo.socialMedia as media}
-                    <a  href={media.url}>{media.name}</a>
+                    <a target="_blank"  href={media.url}>{media.name}</a>
             {/each}
             </div>
         </div>

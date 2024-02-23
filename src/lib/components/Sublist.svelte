@@ -11,7 +11,7 @@
         {#each values as value}
         <li class="break-words">   
             {#if value.url }
-            <a href={value.url}>{value.name}</a>
+            <a target="_blank" href={value.url}>{value.name}</a>
             {:else}
                 {value.name}
             {/if}
