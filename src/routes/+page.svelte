@@ -17,9 +17,9 @@
 
 <section class="">
 
-	<div class="py-10">
-		<h1 class="text-center text-6xl">Welcome to researchandwaves.net!</h1>
-		<h2 class="text-center font-normal text-4xl">Kindly let us know who you would like to be (today):</h2>
+	<div class="py-10 max-w-screen-xl mx-auto">
+		<h1 class="text-center text-xl md:text-2xl">Welcome to researchandwaves.net!</h1>
+		<h2 class="text-center font-normal text-3xl md:text-5xl">Kindly let us know who you would like to be (today):</h2>
 	</div>
 	<div class="flex flex-col gap-10">
 		{#each views as view}

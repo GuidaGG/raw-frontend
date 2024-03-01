@@ -19,7 +19,7 @@
         scrollbar-width: none;  /* Firefox */
   }
     .grainy-gradient {
-        background: linear-gradient(to bottom, #E4E5E7 0%, #E4E5E7 5%, #2d7aff 40%, #2d7aff 100%);
+        background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, #2d7aff 100%);
     }
     }
 
@@ -40,7 +40,7 @@
 
 
     h1, h2, h3, h4, h5 {
-        @apply font-medium pb-2 uppercase
+        @apply font-medium pb-2 
     }
 
     h1 {
