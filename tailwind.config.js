@@ -11,11 +11,14 @@ export default {
          'raw-blue': '#2d7aff',
         // 'raw-blue-light': '#96bcff',
         'raw-blue-light': '#aec8fc',
-        'raw-white': '#E4E5E7'
+        'raw-white': 'white'
       },
       fontFamily: {
 				rawFont: ['raw-frontend/src/lib/fonts/SpaceGrotesk-VariableFont_wght.ttf', 'sans-serif'],
 			},
+      backgroundImage: {
+        'pattern': "url('src/lib/images/Background.svg')",
+      }
     }
   },
   plugins: [

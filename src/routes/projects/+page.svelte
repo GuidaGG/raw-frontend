@@ -7,7 +7,7 @@ import type { Project } from '$lib/types'
 
     const projects = data.content.projects;
     const sortedProjects: Record<string, Project[]> = projects.reduce((acc: any, project: Project) => {
-		let type = project.project_type.name;
+		let type = project?.project_type?.name;
 		if (!acc[type]) {
 			acc[type] = [];
 		}

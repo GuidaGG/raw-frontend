@@ -28,7 +28,7 @@
 	</main>
 
 	{#key showPlaylist}
-	<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"}   px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
+	<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"} px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
 		
 		<div class="flex justify-between items-center">
 		

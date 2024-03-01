@@ -8,6 +8,11 @@
 	src: url("./lib/fonts/SpaceGrotesk-VariableFont_wght.ttf");
 }
 
+@font-face {
+	font-family: 'Inter-VariableFont';
+	src: url("./lib/fonts/Inter-VariableFont_wght.ttf");
+}
+
 
 @layer utilities {
  
@@ -19,7 +24,7 @@
         scrollbar-width: none;  /* Firefox */
   }
     .grainy-gradient {
-        background: linear-gradient(to bottom, #E4E5E7 0%, #E4E5E7 5%, #2d7aff 40%, #2d7aff 100%);
+        background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, #2d7aff 100%);
     }
     }
 
@@ -40,7 +45,7 @@
 
 
     h1, h2, h3, h4, h5 {
-        @apply font-medium pb-2 uppercase
+        @apply font-medium pb-2 
     }
 
     h1 {
@@ -54,7 +59,9 @@
     h3, h4, h5 {
         @apply text-base
     }
-
+    p {
+        font-family: Inter-VariableFont;
+    }
     .prose {
         @apply text-raw-blue prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0  prose-a:text-raw-blue 
     }
