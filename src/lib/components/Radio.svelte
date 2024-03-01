@@ -14,6 +14,7 @@
     export let radio: Project[]
     export let showPlaylist: boolean;
     export let hide: boolean;
+    export let projectOverview: boolean;
 
     let loaded: boolean = false;
     let selected:number = 0;
@@ -111,7 +112,7 @@
 
 </script>  
 
- <div class="fixed w-full bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-screen-2xl border-y md:border w-full absolute top-14 md:top-40 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
+ <div class="fixed {projectOverview ? "w-full" : "w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-[calc(100%-5rem)] border-y md:border w-full absolute top-14 md:top-20 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
     <div class=" relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
         {#key loaded}
          <audio 

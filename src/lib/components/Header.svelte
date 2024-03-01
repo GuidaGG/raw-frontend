@@ -4,13 +4,15 @@
 	import { currentView } from "$lib/store";
 	import List from 'svelte-feathers/List.svelte';
 	import User from 'svelte-feathers/Eye.svelte';
-
+	import { page } from "$app/stores";
 	let buttonView = { title: '', url: ''}
 	
 	currentView.subscribe((value) => {
 		buttonView.title = value.title;
 		buttonView.url = value.url;
 	})
+
+	let domain = "http://localhost:5173"
 
 </script>
 
@@ -25,7 +27,7 @@
 				{#if buttonView.title}	
 					<Button 
 						invert
-						link={`views/${buttonView.url}`}
+						link={`${domain}/views/${buttonView.url}`}
 						class="text-xs md:text-xl px-5">
 						{buttonView.title}
 						
