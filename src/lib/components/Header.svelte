@@ -17,8 +17,8 @@
 
 <header class="sticky top-0 be z-10 bg-gradient-to-b from-raw-white  via-raw-white text-base md:text-xl">
 
-	<div class="flex md:grid justify-between grid-cols-3 items-center h-24  md:h-40 px-5 w-full ">
-		<div class="max-w-24 sm:max-w-56"><a href="/"><img alt="logo" src={logo} /></a></div>	
+	<div class="flex md:grid justify-between grid-cols-3 items-center h-24  md:h-36 px-5 w-full ">
+		<div class="max-w-24 sm:max-w-44"><a href="/"><img alt="logo" src={logo} /></a></div>	
 
 		<div class="md:place-self-center">
 	

@@ -2,13 +2,13 @@
 import type { AudioTrack } from "$lib/types";
 
 export let audio: AudioTrack;
-
+export let invert = false;
 </script>
 
 
-        
+
 <div class="block md:flex w-4/5  md:w-full gap-3 items-center max-w-[80%] overflow-clip">
-    <h4 class="md:border-r border-raw-blue pr-3  pb-0 font-normal text-nowrap">{audio.title}</h4>
+    <h4 class="md:border-r  {invert ? "border-raw-blue" : "border-white"} pr-3  pb-0 font-normal text-nowrap">{audio.title}</h4>
     <div class="text-base text-nowrap">
         {#each audio.artist as artist, index}
 
