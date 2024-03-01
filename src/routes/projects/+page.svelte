@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { Project } from '$lib/types'
+    import Contact from '$lib/components/Dynamic/Contact.svelte';
+import type { Project } from '$lib/types'
     import { formatDate } from '$lib/utils.js';
 
     export let data
@@ -40,7 +41,7 @@
     {#if type != "Ongoing"}
     <div class="space-y-5 relative">
         <h3 class="text-base uppercase font-medium">{titles[type]}</h3>
-        <table class="table-fixed text-left text-base border-collapse w-full">
+        <table class="table-fixed text-left text-base border-collapse w-full border-raw-blue border">
             <thead>
                 <tr class="uppercase ">
                   <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
@@ -89,11 +90,11 @@
 
     <div class="space-y-5 w-full">
         <h3 class="text-base uppercase font-medium">Network</h3>
-        <div class="flex flex-col sm:flex-row gap-5 md:gap-0">
-            <ul class="text-base w-3/6 pr-5">
-                <li class="uppercase font-medium">/People</li>
+        <div class="flex flex-col sm:flex-row gap-5 md:gap-0 justify-between">
+            <ul class="text-base w-2/6 border-raw-blue border">
+                <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
             {#each getFilteredValues(projects, "collaborations") as collab}
-                <li>
+                <li class="px-1">
                     {#if collab.url }
                         <a href={collab.url}>{collab.name}</a>
                     {:else}
@@ -103,10 +104,10 @@
             {/each}
             </ul>
 
-            <ul class="text-base pr-5">
-                <li class="uppercase font-medium">/ORGANIZATIONS</li>
+            <ul class="text-base border-raw-blue border">
+                <li class="uppercase font-medium border-raw-blue border-b p-1">/ORGANIZATIONS</li>
             {#each getFilteredValues(projects, "place") as collab}
-                <li>
+                <li class="px-1">
                     {#if collab.url }
                         <a href={collab.url}>{collab.name}</a>
                     {:else}
@@ -153,9 +154,13 @@
 
 </div>
 
+<div class="max-w-screen-2xl mx-auto mb-10">
+    <Contact section={{title:"Contact", subtitle:"", __typename:""}} />
+</div>
+
 <style type="postcss">
     th, td {
-        @apply align-top ;
+        @apply align-top border-raw-blue border p-1;
     }
     th {
         @apply font-medium;

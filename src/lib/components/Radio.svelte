@@ -111,7 +111,7 @@
 
 </script>  
 
- <div class=" bg-raw-white max-w-screen-2xl mx-auto border-raw-blue mt-10 border-t border-r border-l {hide ? 'hidden' : ''} {showPlaylist ? 'border-b w-full absolute top-20 md:top-40 left-1/2 -translate-x-1/2 mb-4 ' : ''}">
+ <div class="fixed w-full bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-screen-2xl border-y md:border w-full absolute top-14 md:top-40 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
     <div class=" relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
         {#key loaded}
          <audio 
@@ -125,7 +125,7 @@
             on:ended={() => changeAudio(selected+1)}
         />
         {/key} 
-        <Track audio={currentAudio}/>
+        <Track audio={currentAudio} invert={showPlaylist}/>
         <div class="w-full pt-4 md:pt-0  md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
             <div class="absolute px-5 md:px-0 h-28 md:h-auto  md:relative flex gap-5 top-0 right-0 md:right-auto md:top-auto items-center">
                 <ArrowLeft class="hidden md:block" on:click={() => changeAudio(selected-1)}/>
@@ -154,8 +154,8 @@
             {#each playlist as audio, index }
                 {#if audio.file?.url}
     
-                <div class={`flex justify-between items-center px-5 py-2 hover:bg-raw-blue-light hover:text-white hover:cursor-pointer hover:border-white ${index === selected ? 'bg-raw-blue-light text-white' : 'bg-raw-white'}`}>
-                  <Track {audio} />
+                <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light hover:text-white hover:cursor-pointer hover:border-white ${index === selected ? 'bg-raw-blue-light text-white' : 'bg-raw-white'}`}>
+                  <Track {audio} invert />
 
                     <div class="flex gap-10 items-center text-base">
                         <div class="flex">
@@ -179,10 +179,10 @@
 <style lang="postcss">
     progress[value]::-webkit-progress-bar {
        @apply bg-raw-white;
-        border-bottom: #5D96FF solid 1px
+        border-bottom: #aec8fc solid 2px
     }
 
     progress[value]::-webkit-progress-value {
-        background-color: #5D96FF
+        background-color: #aec8fc
     }
 </style>

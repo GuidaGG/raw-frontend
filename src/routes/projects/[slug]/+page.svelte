@@ -1,5 +1,6 @@
 <script lang="ts">
-     import Image from '$lib/components/Image.svelte';
+     import Contact from '$lib/components/Dynamic/Contact.svelte';
+import Image from '$lib/components/Image.svelte';
     import Sublist from '$lib/components/Sublist.svelte';
     import { formatDate } from '$lib/utils.js';
 
@@ -50,7 +51,6 @@
             {/if} 
             </div>
         </div>
-
+    
     </div>
-   
 </div>

@@ -26,27 +26,28 @@
 	<main class="min-h-[calc(100vh-144px)]">
 		<slot />
 	</main>
-	<div class="w-full">
-		<Radio {radio} {hide} {showPlaylist} />
-	</div>
 
-	<footer class="text-white bg-raw-blue p-5">
+	{#key showPlaylist}
+	<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"}   px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
 		
 		<div class="flex justify-between items-center">
 		
-			<span>{currentYear}</span>
+			<span class="text-base">{currentYear}</span>
 			<nav class="list-none flex gap-2 text-sm">
-				<li>
-					<a class="text-white" href="/legal-notice">legal notice</a>
+				<li >
+					<a class="{showPlaylist ? "bg-raw-blue text-white" : ""}" href="/legal-notice">legal notice</a>
 				</li>
 				<li>|</li>
 				<li>
-					<a class="text-white" href="/privacy-policy">privacy policy</a>
+					<a class="{showPlaylist ? "bg-raw-blue text-white" : ""}"  href="/privacy-policy">privacy policy</a>
 				</li>
 			</nav>
 		</div>
-		
 	</footer>
+	{/key}
+	<div class="w-full bg-raw-blue">
+		<Radio {radio} {hide} {showPlaylist} />
+	</div>
 
 </div>
 

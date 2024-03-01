@@ -67,7 +67,7 @@
 <style lang="postcss">
     progress[value]::-webkit-progress-bar {
         background-color: white;
-        border-bottom: #5D96FF solid 1px
+        border-bottom: #5D96FF solid 2px
     }
 
     progress[value]::-webkit-progress-value {

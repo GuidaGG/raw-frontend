@@ -15,11 +15,11 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="p-5">
+<section class="">
 
-	<div class="pb-16">
-		<h1 class="text-center normal-case">Welcome to researchandwaves.net!</h1>
-		<h2 class="text-center normal-case">Kindly let us know who you would like to be (today):</h2>
+	<div class="py-10">
+		<h1 class="text-center text-6xl">Welcome to researchandwaves.net!</h1>
+		<h2 class="text-center font-normal text-4xl">Kindly let us know who you would like to be (today):</h2>
 	</div>
 	<div class="flex flex-col gap-10">
 		{#each views as view}

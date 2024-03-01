@@ -18,7 +18,7 @@
             <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase text-xl">{ section.title}</h2>
         {/if}
         {#if section.subtitle}
-            <div class="px-5 py-2  border-raw-blue">
+            <div class="px-5 py-2 ">
                 { @html section.subtitle}
             </div>
         {/if}
@@ -28,7 +28,7 @@
             </div>
             <div class="flex gap-4 text-sm">
             {#each contactInfo.socialMedia as media}
-                    <a  href={media.url}>{media.name}</a>
+                    <a target="_blank"  href={media.url}>{media.name}</a>
             {/each}
             </div>
         </div>

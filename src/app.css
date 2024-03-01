@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+	font-family: 'SpaceGrotesk-VariableFont';
+	src: url("./lib/fonts/SpaceGrotesk-VariableFont_wght.ttf");
+}
+
+
 @layer utilities {
  
     .no-scrollbar::-webkit-scrollbar {
@@ -11,11 +18,15 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
   }
-}
+    .grainy-gradient {
+        background: linear-gradient(to bottom, #E4E5E7 0%, #E4E5E7 5%, #2d7aff 40%, #2d7aff 100%);
+    }
+    }
 
 
     html {
         font-size:16px;
+        font-family: SpaceGrotesk-VariableFont;
         @screen sm {  
             font-size:18px;
         }
@@ -45,7 +56,7 @@
     }
 
     .prose {
-        @apply prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0  prose-a:text-raw-blue 
+        @apply text-raw-blue prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0  prose-a:text-raw-blue 
     }
 
     a {
@@ -55,16 +66,17 @@
     .prose a {          
         @apply hover:font-medium
     }
+
     a.button            {
         @apply hover:text-raw-white hover:no-underline font-normal
 
     }
 
     a {
-        @apply focus:outline-black focus:outline-4
+        @apply focus:outline-black focus:outline-4 cursor-pointer
     }
                 
-    .inverted:hover a{
+    a.inverted:hover{
         @apply text-raw-blue ;
     }
 
@@ -72,9 +84,7 @@
         @apply tracking-wide
     }
 
-    .grainy-gradient {
-        background: linear-gradient(to bottom, #E4E5E7 0%, #E4E5E7 5%, #5D96FF 40%, #5D96FF 100%);
-    }
+   
 
 
     .center{
