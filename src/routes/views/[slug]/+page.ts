@@ -19,6 +19,7 @@ const viewsQuery = gql`
                             content
                             align
                             layout_joker
+                            transparent
                             links { 
                               name
                               url

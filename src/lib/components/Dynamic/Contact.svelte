@@ -13,7 +13,7 @@
 
 
 
-    <div class=" bg-raw-white max-w-screen-md">
+    <div class=" bg-raw-white max-w-screen-md border border-raw-blue">
         {#if section.title}
             <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase text-xl">{ section.title}</h2>
         {/if}

@@ -11,8 +11,9 @@
     </script>
 
     {#if image}
+
     <img
-        class={`object-cover w-full ${$$restProps.class}` }
+        class={` object-cover w-full ${$$restProps.class}` }
         src={`${config.apiUrl}${url}`} 
         alt={image.alternativeText}
         loading="lazy"

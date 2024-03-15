@@ -34,6 +34,7 @@ export type JokerSection= {
     image: Media;
     align: string;
     layout_joker: string;
+    transparent: boolean;
 }
 
 export type LinksSection = {
