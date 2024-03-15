@@ -2,6 +2,7 @@
 	import Button
 	 from '$lib/components/Button.svelte';
 	export let data
+	import Page from '$lib/components/Page.svelte';
 	import { currentView } from '$lib/store.js';
 
 	let views = data.content.views
@@ -15,11 +16,10 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="py-10">
-
+<Page>
 	<div class="pb-10 max-w-screen-xl mx-auto">
-		<h1 class="text-center text-xl md:text-2xl">Welcome to researchandwaves.net!</h1>
-		<h2 class="text-center font-normal text-3xl md:text-5xl">Kindly let us know who you would like to be (today):</h2>
+		<h1 class="text-center text-xl">Welcome to researchandwaves.net!</h1>
+		<h2 class="text-center font-normal text-3xl md:text-4xl">Kindly let us know who you would like to be (today):</h2>
 	</div>
 	<div class="flex flex-col gap-10">
 		{#each views as view}
@@ -31,4 +31,4 @@
 
 		{/each}
 	</div>
-</section>
+</Page>

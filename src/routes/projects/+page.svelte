@@ -1,5 +1,6 @@
 <script lang="ts">
     import Contact from '$lib/components/Dynamic/Contact.svelte';
+  import Page from '$lib/components/Page.svelte';
 import type { Project } from '$lib/types'
     import { formatDate } from '$lib/utils.js';
 
@@ -36,57 +37,58 @@ import type { Project } from '$lib/types'
     
 </script>
 
-<div class="max-w-screen-2xl mx-auto space-y-20 px-5 py-10">
-{#each Object.entries(sortedProjects) as [type, projects]}
-    {#if type != "Ongoing"}
-    <div class="space-y-5 relative">
-        <h3 class="text-base uppercase font-medium">{titles[type]}</h3>
-        <table class="table-fixed text-left text-base border-collapse w-full border-raw-blue border">
-            <thead>
-                <tr class="uppercase ">
-                  <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
-                  <th class="w-4/5 sm:w-2/6">/TITLE</th>
-                  <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
-                  {#if type === "Event"}
-                    <th class="w-1/6 hidden md:table-cell">/VENUE</th>
-                  {/if}
-                  <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"}">/DATE</th>
-                </tr>
-              </thead>
-              <tbody >
-                {#each projects as project}
-                <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->
-               
-                <tr>
-                    <td class="hidden sm:table-cell">{project.coordinate}</td>
-                    <td><a href="/projects/{project.slug}">{project.title}</a></td>
-                    <td class="hidden sm:table-cell">
-                    {#each project.project_categories as cat, index}
-                       <span>{cat.name}</span>
-                    {/each}
-                    </td>
+<Page>
+    <div class="mx-auto space-y-20">
+    {#each Object.entries(sortedProjects) as [type, projects]}
+        {#if type != "Ongoing"}
+        <div class="space-y-5 relative">
+            <h3 class="text-base uppercase font-medium">{titles[type]}</h3>
+            <table class="table-fixed text-left text-base border-collapse w-full border-raw-blue border">
+                <thead>
+                    <tr class="uppercase ">
+                    <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
+                    <th class="w-4/5 sm:w-2/6">/TITLE</th>
+                    <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
                     {#if type === "Event"}
-                        <td class="hidden md:table-cell">
-                        {#each project.place as place, index}
-                            {#if place.url }
-                                <a href={place.url}>{place.name}</a>
-                            {:else}
-                                {place.name}
-                            {/if}
-                          
-                        {/each}
-                      
-                        </td>
+                        <th class="w-1/6 hidden md:table-cell">/VENUE</th>
                     {/if}
-                    <td>{formatDate(project.date)}</td>
+                    <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"}">/DATE</th>
                     </tr>
-          
-                {/each}
-              </tbody>
-        </table>
-    </div>
-    {/if}
-{/each}
+                </thead>
+                <tbody >
+                    {#each projects as project}
+                    <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->
+                
+                    <tr>
+                        <td class="hidden sm:table-cell">{project.coordinate}</td>
+                        <td><a href="/projects/{project.slug}">{project.title}</a></td>
+                        <td class="hidden sm:table-cell">
+                        {#each project.project_categories as cat, index}
+                        <span>{cat.name}</span>
+                        {/each}
+                        </td>
+                        {#if type === "Event"}
+                            <td class="hidden md:table-cell">
+                            {#each project.place as place, index}
+                                {#if place.url }
+                                    <a href={place.url}>{place.name}</a>
+                                {:else}
+                                    {place.name}
+                                {/if}
+                            
+                            {/each}
+                        
+                            </td>
+                        {/if}
+                        <td>{formatDate(project.date)}</td>
+                        </tr>
+            
+                    {/each}
+                </tbody>
+            </table>
+        </div>
+        {/if}
+    {/each}
 
     <div class="space-y-5 w-full">
         <h3 class="text-base uppercase font-medium">Network</h3>
@@ -151,9 +153,8 @@ import type { Project } from '$lib/types'
                 </tbody>
             </table>
         </div>
-
-</div>
-
+    </div>
+</Page>
 <div class="max-w-screen-2xl mx-auto mb-10">
     <Contact section={{title:"Contact", subtitle:"", __typename:""}} />
 </div>

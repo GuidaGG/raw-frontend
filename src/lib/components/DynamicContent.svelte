@@ -9,7 +9,7 @@
 
 </script>
 
-<div class="max-w-screen-2xl mx-auto space-y-10">
+<div class="mx-auto space-y-10">
     {#each page.dynamic_content as section}
         {#if section.__typename === "ComponentDynamicText"}
             <TextSection {section}/>

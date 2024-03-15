@@ -25,10 +25,9 @@
 
 <div class="app">
 	<Header />
-	<main class="min-h-[calc(100vh-144px)] relative {projectOverview ? "w-full" : "w-4/5 "}" >
+	<main class="min-h-[calc(100vh-144px)] relative {projectOverview ? "w-full" : "md:w-4/5 "}" >
 		<slot />
 
-		
 	{#key showPlaylist}
 		<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"} px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
 			
@@ -48,11 +47,11 @@
 		</footer>
 		{/key}
 		
-		<div class="w-4/5 bg-raw-blue">
+		<div class="md:w-4/5 bg-raw-blue">
 			<Radio {radio} {hide} {showPlaylist} {projectOverview} />
 		</div>
 	</main>
-	<div class="w-1/5 border-l border-raw-blue bg-white h-screen top-0 right-0 overflow-y-scroll overflow-x-hidden pt-40 px-5 no-scrollbar {projectOverview ? "hidden" : "fixed"}">
+	<div class="hidden md:block md:w-1/5 border-l border-raw-blue bg-white h-screen top-0 right-0 overflow-y-scroll overflow-x-hidden pt-40 px-5 no-scrollbar {projectOverview ? "hidden" : "fixed"}">
 		<div class="border rounded-full border-raw-blue mb-10 flex p-2 w-full gap-2 items-center">
 			<Search class="cursor-pointer h-6 w-8 shrink-0" />
 			<input type="search" placeholder="search" class="text-base placeholder:text-raw-blue focus:outline-none  bg-transparent">
