@@ -2,6 +2,7 @@
     import DynamicContent from '$lib/components/DynamicContent.svelte';
     import { currentView } from '$lib/store.js';
     import { page } from '$app/stores';
+    import Page from '$lib/components/Page.svelte';
     export let data;
 
     let views = data.content?.views[0];
@@ -14,6 +15,6 @@
 
 </script>
 
-<div class="grainy-gradient px-10 py-10 pt-96">
+<Page class="grainy-gradient px-10 py-10 pt-96">
     <DynamicContent page={views} {projects}/> 
-</div>
+</Page>

@@ -18,6 +18,9 @@ export default {
 			},
       backgroundImage: {
         'pattern': "url('src/lib/images/Background.svg')",
+      },
+      animation: {
+        spin: 'spin 2s linear infinite',
       }
     }
   },

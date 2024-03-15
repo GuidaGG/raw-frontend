@@ -1,6 +1,7 @@
 <script lang="ts">
      import Contact from '$lib/components/Dynamic/Contact.svelte';
-import Image from '$lib/components/Image.svelte';
+    import Image from '$lib/components/Image.svelte';
+    import Page from '$lib/components/Page.svelte';
     import Sublist from '$lib/components/Sublist.svelte';
     import { formatDate } from '$lib/utils.js';
 
@@ -11,7 +12,7 @@ import Image from '$lib/components/Image.svelte';
 </script>
 
 
-<div class="max-w-screen-2xl mx-auto space-y-20 py-10">
+<Page class="space-y-20">
     <div class="flex flex-col-reverse md:flex-row w-full md:gap-28">
         <div class="w-full md:w-2/5 shrink-0">
             {#each project.images as image}
@@ -53,4 +54,4 @@ import Image from '$lib/components/Image.svelte';
         </div>
     
     </div>
-</div>
+</Page>

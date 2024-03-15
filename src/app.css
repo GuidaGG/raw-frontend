@@ -22,18 +22,17 @@
     .no-scrollbar {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
-  }
+    }
     .grainy-gradient {
         background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, #2d7aff 100%);
     }
-    }
+}
 
-
-    html {
-        font-size:16px;
+html {
+        font-size:14px;
         font-family: SpaceGrotesk-VariableFont;
         @screen sm {  
-            font-size:18px;
+            font-size:16px;
         }
     
     }
