@@ -16,8 +16,8 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Page>
-	<div class="pb-10 max-w-screen-xl mx-auto">
+<Page class="min-h-[calc(100vh-12.0rem)]">
+	<div class="pb-10 max-w-screen-xl mx-auto ">
 		<h1 class="text-center text-xl">Welcome to researchandwaves.net!</h1>
 		<h2 class="text-center font-normal text-3xl md:text-4xl">Kindly let us know who you would like to be (today):</h2>
 	</div>

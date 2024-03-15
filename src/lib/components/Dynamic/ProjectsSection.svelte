@@ -45,13 +45,13 @@
 </script>
 
 <!-- <pre>{JSON.stringify(listProjects, null, 2)}</pre> -->
-<div class="bg-raw-white">
+<div class="bg-raw-white border border-raw-blue">
     <div class="relative overflow-hidden ">
         <div class="flex flex-row transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar w-auto " bind:this={container}>
             {#each listProjects as project}
                 <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto">
                     <a href="/projects/{project.slug}" class="bg-pink-400" >
-                         <Image image={project.images[0]} size="large" class="pr-5 md:pr-20 border-t border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
+                         <Image image={project.images[0]} size="large" class="pr-5 md:pr-20 border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
                     </a>
                 </div>
             {/each}

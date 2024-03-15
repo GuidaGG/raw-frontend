@@ -6,48 +6,63 @@
     export let section: JokerSection
     </script>
 
-    <div class=" flex flex-col bg-raw-white  w-full gap-5  {section.align} {section.layout_joker} pb-10">
-        <div class="basis-1/2">
+    <section class="flex flex-col  w-full gap-5  {section.align} {section.layout_joker}">
+        <div class="graphics basis-1/2 {section.transparent ? "no-borders" : "borders"}">
             {#if section.image}
-            <Image image={section.image}/>
+            <Image image={section.image} class="borde"/>
             {/if}
             {#if section.video}
                 <Video video={section.video} />
             {/if}
        </div>
+     {#if section.title || section.subtitle || section.content || section.links.length}
        <div class="basis-1/2">
-            <div class="prose max-w-screen-lg bg-raw-white">
-                {#if section.title}
-                    <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase">{ section.title}</h2>
-                {/if}
-                {#if section.subtitle}
-                    <h3 class=" border-raw-blue p-5 pb-2 not-prose uppercase">{ section.subtitle}</h3>
-                {/if}
-                <div class="px-5 py-2 border-b border-raw-blue">
-                    { @html section.content}
+            <div class="bg-raw-white border-raw-blue border">
+                <div class="prose max-w-screen-lg " >
+                    {#if section.title}
+                        <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase ">{ section.title}</h2>
+                    {/if}
+                    {#if section.subtitle}
+                        <h3 class=" px-5 py-2 not-prose uppercase ">{ section.subtitle}</h3>
+                    {/if}
+                    {#if section.content}
+                    <div class="px-5 py-2">
+                        { @html section.content}
+                    </div>
+                    {/if}
                 </div>
+                {#if section.links.length}
+                <ul class=" px-5 text-sm py-5 ">
+                    <li class="font-medium">Links:</li>
+                    {#each section.links as link}
+                    <li>
+                        <a target="_blank"  class="font-bold" href={link.url}>{link.name}</a>
+                    </li>
+                    {/each}
+                </ul>
+                {/if}
             </div>
-            {#if section.links.length}
-            <ul class="bg-raw-white px-5 text-sm mt-5">
-                <li class="font-medium">Links:</li>
-                {#each section.links as link}
-                <li>
-                    <a target="_blank" href={link.url}>{link.name}</a>
-                </li>
-                {/each}
-            </ul>
-            
-            {/if}
         </div>
-    </div>
+     {/if}
+    </section>
 
     <style type="postcss">
         .two_columns {
-            @apply lg:flex-row lg:max-w-screen-2xl;
-   
+            @apply lg:flex-row lg:max-w-screen-2xl gap-5;
         }
+
+        .two_columns  .graphics.borders {
+                @apply border border-raw-blue;
+        }
+
         .one_column {
-            @apply w-full md:w-2/3 max-w-screen-lg
+            @apply w-full md:w-2/3 max-w-screen-lg gap-0 
+    
         }
+
+        .one_column  .graphics.borders {
+                @apply border border-raw-blue border-b-0;
+        }
+
 
     </style>
