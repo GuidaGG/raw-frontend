@@ -72,3 +72,26 @@ export function flattenJson(json: any): any {
         }))
             )
     };
+
+  export const sortProjects = (projects: Project[]) => { return projects.reduce((acc: any, project: Project) => {
+      let type = project?.project_type?.name;
+      if (!acc[type]) {
+        acc[type] = [];
+      }
+      acc[type].push(project);
+      return acc;
+    }, {});
+  }
+
+  export const getFilteredValues = (array: Project[], key: string) => {
+    const uniqueSlugs: Set<string> = new Set();
+    let filtered = array.map(obj => obj[key]).reduce((acc, curr) => acc.concat(curr), []);
+    return  filtered.filter(obj => {
+            if (uniqueSlugs.has(obj.name)) {
+            return false; 
+        } else {
+            uniqueSlugs.add(obj.name);
+            return true;
+        }
+    });  
+}

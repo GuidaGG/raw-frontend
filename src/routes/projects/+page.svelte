@@ -1,9 +1,10 @@
 <script lang="ts">
     import Contact from '$lib/components/Dynamic/Contact.svelte';
-  import Page from '$lib/components/Page.svelte';
-import type { Project } from '$lib/types'
+    import Page from '$lib/components/Page.svelte';
+    import type { Project } from '$lib/types'
     import { formatDate } from '$lib/utils.js';
-
+    import { getFilteredValues } from '$lib/utils.js';
+    
     export let data
 
     const projects = data.content.projects;
@@ -16,18 +17,7 @@ import type { Project } from '$lib/types'
 		return acc;
 	}, {});
 
-    const getFilteredValues = (array: Project[], key: string) => {
-        const uniqueSlugs: Set<string> = new Set();
-        let filtered = array.map(obj => obj[key]).reduce((acc, curr) => acc.concat(curr), []);
-        return  filtered.filter(obj => {
-                if (uniqueSlugs.has(obj.name)) {
-                return false; 
-            } else {
-                uniqueSlugs.add(obj.name);
-                return true;
-            }
-        });  
-    }
+
 
     const titles = {
         Event: "events",

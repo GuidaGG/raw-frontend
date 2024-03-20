@@ -140,7 +140,7 @@
             bind:duration
             bind:paused
             preload="none" 
-            src={`${config.apiUrl}${tracks[0].file.url}`}
+            src={`${config.apiUrl}${tracks[selected].file.url}`}
             tabindex="0" 
             on:ended={() => changeIndex(selected+1)}
         />
