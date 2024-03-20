@@ -23,7 +23,7 @@
         <div class="border rounded-full bg-white  border-raw-blue mb-10 flex p-2 w-full gap-2 items-center" >
 
             <Search class="cursor-pointer h-6 w-8 shrink-0" />
-            <input type="search" bind:value={searchInput} placeholder="search" class="text-base placeholder:text-raw-blue focus:outline-none  bg-transparent">
+            <input type="search" bind:value={searchInput} placeholder="search" class="text-base placeholder:text-raw-blue focus:outline-none w-full bg-transparent">
         </div>
     </div>  
     <div class="space-y-10 text-base">
