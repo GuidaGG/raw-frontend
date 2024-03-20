@@ -23,9 +23,9 @@
 	$: projectOverview = isProjectOverview($page)
 </script> 
 
-<div class="app">
+<div class="app relative">
 	<Header />
-		<main class="min-h-[calc(100vh-144px)] relative {projectOverview ? "w-full" : "md:w-4/5 "}" >
+		<main class="min-h-[calc(100vh-144px)]  relative {projectOverview ? "w-full" : "md:w-4/5 "}" >
 		<slot />
 
 	{#key showPlaylist}
