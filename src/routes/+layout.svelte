@@ -1,10 +1,12 @@
 <script lang="ts">
 	import Header from "$lib/components/Header.svelte";
 	import "../app.css";
-	import { contact } from "$lib/store";
+	import { contact, playlist } from "$lib/store";
   	import Radio from "$lib/components/Radio.svelte";
 	import { page } from "$app/stores";
 	import Search from 'svelte-feathers/Search.svelte';
+	import { transformPlaylist } from "$lib/utils";
+
 	export let data;
 
 	let currentYear = new Date().getFullYear();
@@ -21,14 +23,20 @@
 	$: showPlaylist = hasViewsSubpath($page) 
 	$: hide = isInHomePage($page); 
 	$: projectOverview = isProjectOverview($page)
+
+	const transformedPlaylist = transformPlaylist(radio)
+	
+	playlist.set(transformedPlaylist)
+
 </script> 
 
 <div class="app relative">
+	
 	<Header />
 		<main class="min-h-[calc(100vh-144px)]  relative {projectOverview ? "w-full" : "md:w-4/5 "}" >
 		<slot />
 
-	{#key showPlaylist}
+		{#key showPlaylist}
 		<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"} px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
 			
 			<div class="flex justify-between items-center">
