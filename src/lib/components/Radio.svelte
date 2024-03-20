@@ -19,7 +19,7 @@
     export let projectOverview: boolean;
 
     let loaded: boolean = false;
-    let selected:number = 0;
+    let selected:number;
     let player:HTMLAudioElement;
     let duration = 0;
 	let time = 0;
@@ -58,12 +58,12 @@
  */
     const preloadAudioBuffers = async (playlist: AudioTrack[]) => {
         console.log("preload buffer")
-        audioBuffers = [];
-        durations = []
+      
         for (const audio of playlist) {
+            console.log(!audioBuffers.find(track => track.src === `${config.apiUrl}${audio.file.url}`))
+            if(!audioBuffers.find(track => track.src === `${config.apiUrl}${audio.file.url}`)){
             if (typeof Audio !== "undefined") {
                 const audioBuffer = new Audio();
-
                 audioBuffer.src = `${config.apiUrl}${audio.file.url}`;
                 audioBuffers.push(audioBuffer);
                 loaded = true;
@@ -71,6 +71,7 @@
             /*     let duration = await getAudioDuration(audioBuffer);
                 playlist[0].duration = duration; */
 
+            }
             }
             
         }
@@ -113,14 +114,10 @@
     }
 
     const changeAudio = (index:number) => {
-        console.log(index)
-
         if(player){
             player.src = audioBuffers[index].src;
             player.play();  
         }
-      
-
     }   
 
 
@@ -134,6 +131,7 @@
 
 
  <div class="fixed {projectOverview ? "w-full" : "w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-[calc(100%-10rem)] border-y md:border w-full absolute top-14 md:top-20 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
+
      <div class=" relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
        {#key loaded}
          <audio 
@@ -142,7 +140,7 @@
             bind:duration
             bind:paused
             preload="none" 
-            src={`${config.apiUrl}${tracks[selected].file.url}`}
+            src={`${config.apiUrl}${tracks[0].file.url}`}
             tabindex="0" 
             on:ended={() => changeIndex(selected+1)}
         />
