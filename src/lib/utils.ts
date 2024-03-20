@@ -1,3 +1,5 @@
+import type { Project } from "./types";
+
 export function flattenJson(json: any): any {
     if (typeof json !== 'object' || json === null) {
       return json;
@@ -58,3 +60,15 @@ export function flattenJson(json: any): any {
     const d = new Date(date)
     return `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}.${d.getFullYear()}`;
   }
+
+  export const transformPlaylist = (inputArray: Project[]) => {
+    return inputArray.flatMap((item) => item.audioFiles.map((track) => (
+        {
+            title: track.title,
+            artist: item.collaborations,
+            project: item.slug,
+            file: track.audioFile
+ 
+        }))
+            )
+    };

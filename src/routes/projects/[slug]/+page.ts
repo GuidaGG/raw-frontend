@@ -40,6 +40,34 @@ const projectsQuery = gql`
                       name
                       url
                     }
+                    audioFiles {
+                        title
+                        audioFile {
+                            data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                            }
+                        }
+                        audioFile_download {
+                            data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                            }
+                        }
+                     
+                        radio
+
+                    }
                     project_categories {
                       data {
                         id

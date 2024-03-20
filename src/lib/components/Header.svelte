@@ -18,7 +18,7 @@
 </script>
 
 
-<header class="sticky top-0 be z-10 bg-gradient-to-b from-raw-white 30% via-raw-white text-base md:text-xl">
+<header class="fixed w-full top-0 z-10 bg-gradient-to-b from-raw-white 30% via-raw-white text-base md:text-xl">
 
 	<div class="flex md:grid justify-between grid-cols-3 items-center h-24  md:h-32 px-5 w-full ">
 		<div class="max-w-24  sm:max-w-40"><a href="/"><Logo class="min-w-24 fill-raw-blue stroke-raw-blue hover:animate-spin"  /></a></div>	
