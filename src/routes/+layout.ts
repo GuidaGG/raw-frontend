@@ -67,13 +67,64 @@ const RadioQuery = gql`
     }
 `
 
+const projectsQuery = gql`
+     query getProjects{
+        projects(sort: [ "project_type.name:desc", "date" ]) {
+            data{
+                id
+                attributes{ 
+                    title
+                    subtitle
+                    description
+                    slug
+                    coordinate
+                    date
+                    funding
+                    collaborations {
+                      name 
+                      url
+                    } 
+                    place {
+                      name
+                      url
+                    }
+                    links {
+                      name
+                      url
+                    }
+                    project_categories {
+                      data {
+                        id
+                        attributes {
+                          name
+                          slug
+                        }
+                      }
+                    }
+                    project_type {
+                      data {
+                        id
+                        attributes {
+                          name
+                          slug
+                        }
+                      }
+                    }
+                }
+            }
+        }
+    }
+`
+
 export const load: import('./$types').PageLoad = (async () => {
     try {
         const dataGeneral = await client.request(contactQuery);
         const dataRadio = await client.request(RadioQuery);
+        const projects =  await client.request(projectsQuery)
         return {
             content: flattenJson(dataGeneral),
-            radio: flattenJson(dataRadio )
+            radio: flattenJson(dataRadio ),
+            sidebar: flattenJson(projects)
         }
     } catch (error) {
       console.error('Error fetching data:', error);
