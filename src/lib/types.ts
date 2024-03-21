@@ -59,6 +59,11 @@ export type GallerySection = {
     images: Media[];
 }
 
+export type AudioSection = {
+    __typename: string;
+    audios: AudioFile[];
+}
+
 export type ContactSection = {
     __typename: string;
     title:  string;

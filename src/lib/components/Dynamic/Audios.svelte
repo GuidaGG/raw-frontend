@@ -1,0 +1,37 @@
+<script lang="ts">
+import type { AudioTrack } from "$lib/types";
+import { playlist, currentTrack } from '$lib/store.js';
+import Play from 'svelte-feathers/Play.svelte'
+import Download from 'svelte-feathers/Download.svelte'
+
+export let tracks: AudioTrack[];
+
+let radio: AudioTrack[] = []
+
+function playTrack(track: AudioTrack) {
+       const index = radio.findIndex(audio => audio.file?.url === track.file?.url);
+       if(index > -1){
+            currentTrack.set(index)
+       }else{
+         const newPlaylist = [...radio, track]
+         playlist.set(newPlaylist) 
+         currentTrack.set(newPlaylist.length -1)
+       }  
+}
+
+playlist.subscribe(value =>
+    radio = value)
+
+</script>
+
+<div class="pt-10">
+    {#each tracks as audio}
+        <div class="flex gap-4 items-center border-t last-of-type:border-b  border-raw-blue  w-full py-2  px-5 justify-between">
+            <div class="text-base textwhite">{audio.title}</div>
+            <div class="flex gap-4">
+            <Play class="h-7 w-7 cursor-pointer" on:click={() => playTrack(audio)}/>
+            <Download class="h-7 w-7 cursor-pointer"/>
+            </div>
+        </div> 
+    {/each}
+</div>
