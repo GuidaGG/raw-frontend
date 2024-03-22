@@ -4,6 +4,7 @@
     import JokerSection from "./Dynamic/JokerSection.svelte";
     import ProjectsSection from "./Dynamic/ProjectsSection.svelte";
      import Contact from "./Dynamic/Contact.svelte";
+  import AudioSection from "./Dynamic/AudioSection.svelte";
     export let page: View
     export let projects: Project[] = []
 

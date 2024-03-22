@@ -86,21 +86,55 @@ const projectsQuery = gql`
                         }
                       }
                     }
+                  reviews {
+                    data{
+                      id
+                    }
+                  }
                 }
             }
         }
     }
 `
 
+const reviewsQuery = gql`
+     query getReviews($id: [ID]!){
+        reviews(filters: {id: { in: $id }}){
+            data{
+                id
+                attributes{ 
+                    title
+                    slug
+                
+                }
+            }
+        }
+    }
+`
+
+
 export const load: import('../$types').PageLoad = (async ({ params }) => {
   try {
     const variables = {
       slug : params.slug
     }
-      const project =  await client.request(projectsQuery, variables)
-   
+    const project =  await client.request(projectsQuery, variables)
+
+    let reviews = []
+
+    const reviewIds = project.projects.data[0].attributes.reviews
+    const IDs = [] 
+
+    if(reviewIds.data.length > 0) {
+      for (const item of reviewIds.data) {
+        console.log(item.id)
+          IDs.push(item.id)
+        }
+     reviews = await client.request(reviewsQuery, {id: IDs});
+    }
     return {
-     content: flattenJson(project)
+     content: flattenJson(project),
+     projectReviews: flattenJson(reviews)
     }
   } catch (error) {
     console.error('Error fetching data:', error);

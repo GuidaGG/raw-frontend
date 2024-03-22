@@ -10,7 +10,9 @@ export let section: TextSection
     {#if section.title}
         <h2 class="border-b border-raw-blue p-5 pb-2 not-prose uppercase text-xl">{ section.title}</h2>
     {/if}
+    {#if section.body}
     <div class="px-5 py-2 border-b border-raw-blue">
         { @html section.body}
     </div>
+    {/if}
 </div>
