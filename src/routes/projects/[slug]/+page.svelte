@@ -2,8 +2,8 @@
     import Image from '$lib/components/Image.svelte';
     import Sublist from '$lib/components/Sublist.svelte';
     import { formatDate } from '$lib/utils.js';
-    import { transformPlaylist } from '$lib/utils.js';
-    import Audios from '$lib/components/Dynamic/Audios.svelte';
+    import { transformTracksProject } from '$lib/utils.js';
+    import AudioTrack from '$lib/components/Dynamic/AudioTrack.svelte';
 
     export let data;
 
@@ -18,7 +18,7 @@
         images.scrollTop = (images.scrollHeight - images.clientHeight) * percent; 
     }
 
-    $: projectTracks = project?.audioFiles ? transformPlaylist([project]) : [];
+    $: projectTracks = project?.tracks ? transformTracksProject([project]) : [];
    
 
         
@@ -35,6 +35,7 @@
         {/key}
         <div class="px-5 lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll no-scrollbar"  on:scroll={scroll} >
             <div class="px-r sm:pr-20 pb-10 ">
+        
                 <div class="pb-5 uppercase text-base  flex gap-2 max-h-screen pt-24 md:pt-40 ">
                     {formatDate(project.date)} |
                     {#each project.project_categories as cat, index}
@@ -46,8 +47,10 @@
                     <h2>{project.subtitle}</h2>
                 {/if}
                 <div class="text-sm leading-3 pt-2">RAW {project.coordinate}</div>
-                {#if project.audioFiles}
-                    <Audios tracks={projectTracks} />
+                {#if project.tracks}
+                    <div class="pt-10">
+                        <AudioTrack tracks={projectTracks} />
+                    </div>
                 {/if}
         
                 <div class="prose max-w-screen-lg py-10">{@html project.description}</div>

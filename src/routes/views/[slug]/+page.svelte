@@ -15,6 +15,6 @@
 
 </script>
 
-<Page class="grainy-gradient ">
+<Page class="grainy-gradient">
     <DynamicContent page={views} {projects}/> 
 </Page>

@@ -8,12 +8,12 @@ export let invert = false;
 
 
 <div class="block md:flex w-4/5  md:w-full gap-3 items-center max-w-[80%] overflow-clip">
-    <h4 class="md:border-r  {invert ? "border-raw-blue" : "border-white"} pr-3  pb-0 font-normal text-nowrap">{audio.title}</h4>
+    <h4 class="md:border-r {invert ? "border-raw-blue" : "border-white"} pr-3  pb-0 font-normal text-nowrap">{audio.title}</h4>
     <div class="text-base text-nowrap">
-        {#each audio.artist as artist, index}
-
+        <span class="pr-1" >{audio.project}</span>
+       <!--  {#each audio.artist as artist, index}
             <span class="pr-1 {index < audio.artist.length-1 ? "after:content-[',']" : "" }">{artist.name}</span>
-        {/each}
+        {/each} -->
     </div>
 </div>
        

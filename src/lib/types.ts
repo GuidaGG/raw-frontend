@@ -61,7 +61,8 @@ export type GallerySection = {
 
 export type AudioSection = {
     __typename: string;
-    audios: AudioFile[];
+    audioFiles: AudioFile[];
+    align: string;
 }
 
 export type ContactSection = {
@@ -109,6 +110,7 @@ export type AudioTrack = {
     project: string;
     file:  {
         url: string;
+        name: string;
     }
 }
   

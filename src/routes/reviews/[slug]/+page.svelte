@@ -1,13 +1,13 @@
 <script lang="ts">
     import DynamicContent from '$lib/components/DynamicContent.svelte';
-    import { transformPlaylist } from '$lib/utils.js';
+    import { transformTracks } from '$lib/utils.js';
     import Page from '$lib/components/Page.svelte';
     import Audios from '$lib/components/Dynamic/Audios.svelte';
     export let data;
 
     let reviews = data.content?.reviews[0];
 
-    $: reviewTracks = reviews?.audioFiles ? transformPlaylist([reviews]) : [];
+    $: reviewTracks = reviews?.audioFiles ? transformTracks([reviews]) : [];
 </script>
 
 <Page class=" px-10 py-10" >

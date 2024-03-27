@@ -133,9 +133,8 @@
 
  <div
     aria-label="open radio" 
-    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white transition-all {isOpen ? 'bottom-0' : '-bottom-40'}" 
+    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white transition-all {isOpen ? 'bottom-0' : '-bottom-[10rem]'}" 
     >
-
      <button class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center" on:click={() => (isOpen = !isOpen)}>
 
        {#key loaded}
@@ -175,7 +174,6 @@
     </div>
 
     <div class=" overflow-y-scroll border-b border-raw-blue h-40 ">
-
             {#each tracks as audio, index }
                 {#if audio.file?.url}
     

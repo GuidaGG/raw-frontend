@@ -69,6 +69,52 @@ const viewsQuery = gql`
                           title 
                           subtitle
                         }
+                        ... on ComponentDynamicAudio {
+                           tracks {
+                            data{
+                              id
+                              attributes{ 
+                                title
+                                audioFile {
+                                  data {
+                                      id 
+                                      attributes { 
+                                          url
+                                          formats
+                                          alternativeText
+                                          name
+                                      }
+                                  }
+                                }
+                                audioFile_download {
+                                  data {
+                                      id 
+                                      attributes { 
+                                          url
+                                          formats
+                                          alternativeText
+                                          name
+                                      }
+                                  }
+                                }
+                                radio
+                                project {
+                                  data{
+                                    id
+                                    attributes{ 
+                                      title
+                                      slug
+                                      collaborations {
+                                        name 
+                                        url
+                                      } 
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
                     }
                 }
             }
