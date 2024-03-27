@@ -20,11 +20,13 @@
 
 	const isInHomePage = (page): boolean => page.route?.id === "/";
 	const hasViewsSubpath = (page): boolean => page.route?.id === "/views/[slug]";
-	const isProjectOverview = (page): boolean => page.route?.id === "/projects";
+	const hideSidebar= (page): boolean => page.route?.id === "/projects" || page.route?.id === "/"  ;
+	const isProject  = (page): boolean => page.route?.id === "/projects/[slug]";
 
 	$: showPlaylist = hasViewsSubpath($page) 
 	$: hide = isInHomePage($page); 
-	$: projectOverview = isProjectOverview($page)
+	$: sidebarHidden= hideSidebar($page)
+	$: hideFooter = isProject($page)
 
 	const transformedPlaylist = transformPlaylist(radio)
 	
@@ -35,17 +37,16 @@
 <div class="app relative">
 	
 	<Header />
-		<main class="min-h-[calc(100vh-144px)]  relative {projectOverview ? "w-full" : "md:w-4/5 "}" >
+		<main class="min-h-[calc(100vh-144px)]  relative {sidebarHidden ? "w-full" : "md:w-4/5 "}" >
 			
 		<slot />
+		{#if !hideFooter}
+		<footer class="{showPlaylist ? "bg-raw-blue text-white" : " text-raw-blue"} px-5 py-3 md:py-5 ">
+			
+			<div class="w-full text-right ">
+			
 
-		{#key showPlaylist}
-		<footer class="{showPlaylist ? "bg-raw-blue text-white" : "border-t border-raw-blue text-raw-blue"} px-4 py-3 md:py-4 {!hide && !showPlaylist ? 'pb-36 md:mb-14': ''}">
-			
-			<div class="flex justify-between items-center">
-			
-				<span class="text-base">{currentYear}</span>
-				<nav class="list-none flex gap-2 text-sm">
+				<nav class="list-none flex gap-2 text-sm ">
 					<li >
 						<a class="{showPlaylist ? "bg-raw-blue text-white" : ""}" href="/legal-notice">legal notice</a>
 					</li>
@@ -56,13 +57,12 @@
 				</nav>
 			</div>
 		</footer>
-		{/key}
-		
+		{/if}
 		<div class="md:w-4/5 bg-raw-blue">
-			<Radio {radio} {hide} {showPlaylist} {projectOverview} />
+			<Radio {radio} {hide} {showPlaylist} projectOverview={sidebarHidden} />
 		</div>
 	</main>
 	
-		<Sidebar {projectOverview} data={sidebar}/>
+		<Sidebar hidden={sidebarHidden} data={sidebar}/>
 </div>
 
