@@ -129,7 +129,7 @@
 
 
 
- <div class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-[calc(100%-10rem)] border-y md:border w-full absolute top-14 md:top-10 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
+ <div class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} {showPlaylist ? 'bg-raw-white text-raw-blue bottom-auto max-w-[calc(100%-10rem)] border-y md:border w-full md:w-full absolute top-14 md:top-10 left-1/2 -translate-x-1/2 mb-4' : ' text-white'}">
 
      <div class=" relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
        {#key loaded}

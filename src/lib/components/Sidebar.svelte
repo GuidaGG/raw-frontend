@@ -4,7 +4,7 @@
     import { sortProjects } from '$lib/utils';
     import { getFilteredValues } from '$lib/utils';
     
-    export let projectOverview: boolean;
+    export let hidden: boolean;
     export let data;
 
     const sortedProjects = sortProjects(data)
@@ -18,7 +18,7 @@
     $: searchInput = ""
 </script>
 
-<div class="hidden md:block md:w-1/5 border-l border-raw-blue bg-white h-screen top-0 right-0 overflow-y-scroll overflow-x-hidden pt-40  pb-20 px-5 no-scrollbar {projectOverview ? "md:hidden" : "fixed"}">
+<div class="hidden md:block md:w-1/5 border-l border-raw-blue bg-white h-screen top-0 right-0 overflow-y-scroll overflow-x-hidden pt-40  pb-20 px-5 no-scrollbar {hidden ? "md:hidden" : "fixed"}">
     <div class="sticky top-0">
         <div class="border rounded-full bg-white  border-raw-blue mb-10 flex p-2 w-full gap-2 items-center" >
 
