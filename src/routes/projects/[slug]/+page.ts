@@ -105,6 +105,11 @@ const projectsQuery = gql`
                   reviews {
                     data{
                       id
+                      attributes{ 
+                          title
+                          slug
+                      
+                      }
                     }
                   }
                 }

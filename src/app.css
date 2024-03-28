@@ -31,6 +31,7 @@
 html {
         font-size:14px;
         font-family: SpaceGrotesk-VariableFont;
+        scroll-behavior: smooth;
         @screen sm {  
             font-size:16px;
         }
