@@ -66,7 +66,10 @@ export function flattenJson(json: any): any {
         {
             title: track.title,
             artist: item.collaborations,
-            project: item.slug,
+            project: {
+              slug: item.slug,
+              title: item.title
+            },
             file: track.audioFile
  
         }))
@@ -77,8 +80,15 @@ export function flattenJson(json: any): any {
       return inputArray.flatMap((item) => item.tracks.map((track) => (
           {
               title: track.title,
-              artist: track.project.collaborations,
-              project: track.project?.slug,
+              artist: track.project?.collaborations,
+              project: {
+                slug: track.project?.slug,
+                title: track.project?.title,
+              },
+              review: {
+                slug: track.review?.slug,
+                title: track.review?.title,
+              },
               file: track.audioFile
    
           }))

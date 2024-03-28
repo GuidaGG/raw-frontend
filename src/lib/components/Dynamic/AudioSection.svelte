@@ -8,7 +8,7 @@
      $: viewTracks = section?.tracks ? transformTracks([section]) : []; 
 </script>
 
-<div class="w-2/3 bg-white {section.align} border-x border-raw-blue">
+<div class="w-2/3 bg-white {section.align} s">
     {#if section.tracks}
         <AudioTrack tracks={viewTracks} />
     {/if}

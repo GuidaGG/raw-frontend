@@ -64,6 +64,15 @@ const RadioQuery = gql`
                       }
                     }
                   }
+                  review {
+                    data{
+                      id
+                      attributes{ 
+                        title
+                        slug
+                      }
+                    }
+                  }
                 }
             }
         }

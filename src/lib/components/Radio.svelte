@@ -133,7 +133,7 @@
 
  <div
     aria-label="open radio" 
-    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white transition-all {isOpen ? 'bottom-0' : '-bottom-[10rem]'}" 
+    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-all {isOpen ? 'bottom-0' : '-bottom-[50vh]'}" 
     >
      <button class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center" on:click={() => (isOpen = !isOpen)}>
 
@@ -149,7 +149,7 @@
             on:ended={() => changeIndex(selected+1)}
         />
         {/key} 
-        <Track audio={currentAudio} invert={isOpen}/>
+        <Track audio={currentAudio} invert expand/>
         <div class="w-full pt-4 md:pt-0  md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
             <div class="absolute px-5 md:px-0 h-28 md:h-auto  md:relative flex gap-5 top-0 right-0 md:right-auto md:top-auto items-center">
                 <ArrowLeft class="hidden md:block" on:click={() => changeIndex(selected-1)}/>
@@ -173,12 +173,12 @@
         <progress class="w-full h-3 align-top" value={time / duration || 0} /> 
     </div>
 
-    <div class=" overflow-y-scroll border-b border-raw-blue h-40 ">
+    <div class=" overflow-y-scroll border-b border-raw-blue h-[50vh]">
             {#each tracks as audio, index }
                 {#if audio.file?.url}
     
-                <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light hover:text-white hover:cursor-pointer hover:border-white ${index === selected ? 'bg-raw-blue-light text-white' : 'bg-raw-white'}`}>
-                  <Track {audio} invert />
+                <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light  hover:cursor-pointer  ${index === selected ? 'bg-raw-blue-light ' : 'bg-raw-white'}`}>
+                  <Track {audio} expand />
 
                     <div class="flex gap-10 items-center text-base">
                         <div class="flex">

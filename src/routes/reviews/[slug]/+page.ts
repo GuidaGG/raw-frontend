@@ -112,30 +112,13 @@ const reviewsQuery = gql`
                             }
                           }
                         }
-                     
                     }
-         
-                  
                 }
             }
         }
     }
 `
 
-const AudioFilesQuery = gql`
-     query getAudios($id: [ID]!){
-        rmedia(filters: {id: { in: $id }}){
-            data{
-                id
-                attributes{ 
-                    title
-                    slug
-                
-                }
-            }
-        }
-    }
-`
 
 export const load: import('./$types').PageLoad = (async ({ params }) => {
   try {
