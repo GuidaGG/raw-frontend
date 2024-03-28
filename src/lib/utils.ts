@@ -61,16 +61,38 @@ export function flattenJson(json: any): any {
     return `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}.${d.getFullYear()}`;
   }
 
-  export const transformPlaylist = (inputArray: Project[]) => {
-    return inputArray.flatMap((item) => item.audioFiles.map((track) => (
+  export const transformTracksProject = (inputArray: Project[] ) => {
+    return inputArray.flatMap((item) => item.tracks.map((track) => (
         {
             title: track.title,
             artist: item.collaborations,
-            project: item.slug,
+            project: {
+              slug: item.slug,
+              title: item.title
+            },
             file: track.audioFile
  
         }))
             )
+    };
+
+  export const transformTracks = (inputArray ) => {
+      return inputArray.flatMap((item) => item.tracks.map((track) => (
+          {
+              title: track.title,
+              artist: track.project?.collaborations,
+              project: {
+                slug: track.project?.slug,
+                title: track.project?.title,
+              },
+              review: {
+                slug: track.review?.slug,
+                title: track.review?.title,
+              },
+              file: track.audioFile
+   
+          }))
+          )
     };
 
   export const sortProjects = (projects: Project[]) => { return projects.reduce((acc: any, project: Project) => {

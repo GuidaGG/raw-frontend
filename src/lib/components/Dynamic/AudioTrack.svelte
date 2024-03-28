@@ -3,6 +3,7 @@ import type { AudioTrack } from "$lib/types";
 import { playlist, currentTrack } from '$lib/store.js';
 import Play from 'svelte-feathers/Play.svelte'
 import Download from 'svelte-feathers/Download.svelte'
+import Track from "../Radio/Track.svelte";
 
 export let tracks: AudioTrack[];
 
@@ -24,14 +25,12 @@ playlist.subscribe(value =>
 
 </script>
 
-<div class="pt-10">
     {#each tracks as audio}
         <div class="flex gap-4 items-center border-t last-of-type:border-b  border-raw-blue  w-full py-2  px-5 justify-between">
-            <div class="text-base textwhite">{audio.title}</div>
+            <Track {audio} invert />
             <div class="flex gap-4">
             <Play class="h-7 w-7 cursor-pointer" on:click={() => playTrack(audio)}/>
             <Download class="h-7 w-7 cursor-pointer"/>
             </div>
         </div> 
     {/each}
-</div>

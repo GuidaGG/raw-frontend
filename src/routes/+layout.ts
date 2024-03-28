@@ -23,44 +23,56 @@ const contactQuery = gql`
 
 const RadioQuery = gql`
      query getAudios{
-        projects(sort: "title") {
+        tracks(filters: {radio: {eq: true}}) {
             data{
                 id
                 attributes{ 
                     title
-                    slug
-                    audioFiles(filters: {radio: {eq: true}}) {
+                    audioFile {
+                      data {
+                          id 
+                          attributes { 
+                              url
+                              formats
+                              alternativeText
+                              name
+                          }
+                      }
+                  }
+                  audioFile_download {
+                      data {
+                          id 
+                          attributes { 
+                              url
+                              formats
+                              alternativeText
+                              name
+                          }
+                      }
+                  }
+                  radio
+                  project {
+                    data{
+                      id
+                      attributes{ 
                         title
-                        audioFile {
-                            data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
-                                }
-                            }
-                        }
-                        audioFile_download {
-                            data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
-                                }
-                            }
-                        }
-                     
-                        radio
-
-                    }
-                    collaborations {
-                            name 
-                            url
+                        slug
+                        collaborations {
+                          name 
+                          url
                         } 
+                      }
+                    }
+                  }
+                  review {
+                    data{
+                      id
+                      attributes{ 
+                        title
+                        slug
+                      }
+                    }
+                  }
                 }
             }
         }
@@ -123,7 +135,7 @@ export const load: import('./$types').PageLoad = (async () => {
         const projects =  await client.request(projectsQuery)
         return {
             content: flattenJson(dataGeneral),
-            radio: flattenJson(dataRadio ),
+            radio: flattenJson(dataRadio) ,
             sidebar: flattenJson(projects)
         }
     } catch (error) {

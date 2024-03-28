@@ -66,57 +66,59 @@ const reviewsQuery = gql`
                           title 
                           subtitle
                         }
-                     
-                    }
-                    audioFiles {
-                        title
-                        audioFile {
-                            data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
+                        ... on ComponentDynamicAudio {
+                           tracks {
+                            data{
+                              id
+                              attributes{ 
+                                title
+                                audioFile {
+                                  data {
+                                      id 
+                                      attributes { 
+                                          url
+                                          formats
+                                          alternativeText
+                                          name
+                                      }
+                                  }
                                 }
-                            }
-                        }
-                        audioFile_download {
-                            data {
-                                id 
-                                attributes { 
-                                    url
-                                    formats
-                                    alternativeText
-                                    name
+                                audioFile_download {
+                                  data {
+                                      id 
+                                      attributes { 
+                                          url
+                                          formats
+                                          alternativeText
+                                          name
+                                      }
+                                  }
                                 }
+                                radio
+                                project {
+                                  data{
+                                    id
+                                    attributes{ 
+                                      title
+                                      slug
+                                      collaborations {
+                                        name 
+                                        url
+                                      } 
+                                    }
+                                  }
+                                }
+                              }
                             }
+                          }
                         }
-                     
-                        radio
-
                     }
-                  
                 }
             }
         }
     }
 `
 
-const AudioFilesQuery = gql`
-     query getAudios($id: [ID]!){
-        rmedia(filters: {id: { in: $id }}){
-            data{
-                id
-                attributes{ 
-                    title
-                    slug
-                
-                }
-            }
-        }
-    }
-`
 
 export const load: import('./$types').PageLoad = (async ({ params }) => {
   try {

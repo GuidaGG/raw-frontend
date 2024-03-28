@@ -40,9 +40,12 @@ const projectsQuery = gql`
                       name
                       url
                     }
-                    audioFiles {
-                        title
-                        audioFile {
+                    tracks {
+                      data{
+                        id
+                        attributes{ 
+                          title
+                          audioFile {
                             data {
                                 id 
                                 attributes { 
@@ -52,8 +55,8 @@ const projectsQuery = gql`
                                     name
                                 }
                             }
-                        }
-                        audioFile_download {
+                          }
+                          audioFile_download {
                             data {
                                 id 
                                 attributes { 
@@ -63,10 +66,23 @@ const projectsQuery = gql`
                                     name
                                 }
                             }
+                          }
+                          radio
+                          project {
+                            data{
+                              id
+                              attributes{ 
+                                title
+                                slug
+                                collaborations {
+                                  name 
+                                  url
+                                } 
+                              }
+                            }
+                          }
                         }
-                     
-                        radio
-
+                      }
                     }
                     project_categories {
                       data {
@@ -89,6 +105,11 @@ const projectsQuery = gql`
                   reviews {
                     data{
                       id
+                      attributes{ 
+                          title
+                          slug
+                      
+                      }
                     }
                   }
                 }

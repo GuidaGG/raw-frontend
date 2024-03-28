@@ -5,12 +5,12 @@
   	import Radio from "$lib/components/Radio.svelte";
 	import { page } from "$app/stores";
 	import Sidebar from "$lib/components/Sidebar.svelte";
-	import { transformPlaylist } from "$lib/utils";
+	import {transformTracks } from "$lib/utils";
 
 	export let data;
 
 	let currentYear = new Date().getFullYear();
-	let radio = data.radio.projects;
+	let radio = data.radio;
 	const contactInfo = {
     	info: data.content.contact
     }
@@ -28,9 +28,10 @@
 	$: sidebarHidden= hideSidebar($page)
 	$: hideFooter = isProject($page)
 
-	const transformedPlaylist = transformPlaylist(radio)
 	
-	playlist.set(transformedPlaylist)
+    const transformedPlaylist = radio?.tracks ? transformTracks([radio]) : [];   
+
+	 playlist.set(transformedPlaylist)   
 
 </script> 
 
@@ -41,26 +42,27 @@
 			
 		<slot />
 		{#if !hideFooter}
-		<footer class="{showPlaylist ? "bg-raw-blue text-white" : " text-raw-blue"} px-5 py-3 md:py-5 ">
+		<footer class="text-raw-blue px-5 py-3 md:py-5 {hide  ? "mb-0" : " mb-14"}  ">
 			
 			<div class="w-full text-right ">
 			
 
 				<nav class="list-none flex gap-2 text-sm ">
 					<li >
-						<a class="{showPlaylist ? "bg-raw-blue text-white" : ""}" href="/legal-notice">legal notice</a>
+						<a  href="/legal-notice">legal notice</a>
 					</li>
 					<li>|</li>
 					<li>
-						<a class="{showPlaylist ? "bg-raw-blue text-white" : ""}"  href="/privacy-policy">privacy policy</a>
+						<a   href="/privacy-policy">privacy policy</a>
 					</li>
 				</nav>
 			</div>
 		</footer>
 		{/if}
+	
 		<div class="md:w-4/5 bg-raw-blue">
 			<Radio {radio} {hide} {showPlaylist} projectOverview={sidebarHidden} />
-		</div>
+		</div> 
 	</main>
 	
 		<Sidebar hidden={sidebarHidden} data={sidebar}/>

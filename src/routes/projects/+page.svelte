@@ -22,7 +22,8 @@
     const titles = {
         Event: "events",
         Ongoing: "ongoing",
-        Release: "releases"
+        Release: "releases",
+        Exhibition: "exhibitions"
     }
     
 </script>
@@ -39,7 +40,7 @@
                     <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
                     <th class="w-4/5 sm:w-2/6">/TITLE</th>
                     <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
-                    {#if type === "Event"}
+                    {#if type === "Event" || type === "Exhibition" }
                         <th class="w-1/6 hidden md:table-cell">/VENUE</th>
                     {/if}
                     <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"}">/DATE</th>
@@ -54,14 +55,14 @@
                         <td><a href="/projects/{project.slug}">{project.title}</a></td>
                         <td class="hidden sm:table-cell">
                         {#each project.project_categories as cat, index}
-                        <span>{cat.name}</span>
+                        <span class="{index < project.project_categories.length-1 ? "after:content-[',']" : "" }">{cat.name}</span>
                         {/each}
                         </td>
-                        {#if type === "Event"}
+                        {#if type === "Event" || type === "Exhibition" }
                             <td class="hidden md:table-cell">
                             {#each project.place as place, index}
                                 {#if place.url }
-                                    <a href={place.url}>{place.name}</a>
+                                    <a class="{index < project.place.length-1 ? "after:content-[',']" : "" }" href={place.url}>{place.name}</a>
                                 {:else}
                                     {place.name}
                                 {/if}
@@ -144,10 +145,11 @@
             </table>
         </div>
     </div>
+    <div class="mx-auto mt-20">
+        <Contact section={{title:"Contact", subtitle:"", __typename:""}} />
+    </div>
 </Page>
-<div class="max-w-screen-2xl mx-auto mb-10">
-    <Contact section={{title:"Contact", subtitle:"", __typename:""}} />
-</div>
+
 
 <style type="postcss">
     th, td {

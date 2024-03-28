@@ -24,13 +24,14 @@
         scrollbar-width: none;  /* Firefox */
     }
     .grainy-gradient {
-        background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, #2d7aff 100%);
+        background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, white 80%);
     }
 }
 
 html {
         font-size:14px;
         font-family: SpaceGrotesk-VariableFont;
+        scroll-behavior: smooth;
         @screen sm {  
             font-size:16px;
         }
