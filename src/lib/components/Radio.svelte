@@ -134,7 +134,7 @@
  <div
 
     aria-label="open radio" 
-    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-all {isOpen ? 'bottom-0' : '-bottom-[50vh]'}" 
+    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-8.5rem)] sm:top-[calc(100dvh-4rem)]'}" 
     >
      <button class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center" on:click={() => (isOpen = !isOpen)}>
        {#key loaded}
