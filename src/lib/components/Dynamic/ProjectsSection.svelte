@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { Project, ProjectsSection } from "$lib/types";
-    import Arrow from 'svelte-feathers/Play.svelte'
+    import Arrow from "../Arrow.svelte";
     import Image from "../Image.svelte";
-  import { getYear } from "$lib/utils";
+    import { getYear } from "$lib/utils";
     export let section: ProjectsSection
     export let projects: Project[]
 
@@ -58,7 +58,7 @@
             <div class="w-3/4 shrink-0 border-t border-b border-raw-blue"></div>
         </div>
     </div>
-    <div class="p-5 flex wp-full md:justify-between flex-col-reverse md:flex-row gap-5 md:h-48 ">
+    <div class="p-5 flex wp-full md:justify-between flex-col-reverse md:flex-row gap-5 md:h-48">
         <div class="w-full md:w-3/4 shrink-0 ">
             <h3 class="text-xl pb-0">{active.title}</h3>
             <div class="flex gap-2 text-xs">
@@ -74,9 +74,13 @@
             {/if}
         </div>
 
-        <div class="flex  gap-5 md:gap-10">
-            <Arrow class="rotate-180 focus:outline-1 focus:ring-none focus:outline-raw-blue" on:click={before}/>
-            <Arrow on:click={next} class="focus:outline-1 focus:ring-none focus:outline-raw-blue" />
+        <div class="flex  gap-5 md:gap-10 items-start">
+            <button on:click={before} aria-label="Previous Project">
+                <Arrow class="focus:outline-1 focus:ring-none focus:outline-raw-blue stroke-raw-blue" />
+            </button> 
+            <button on:click={next} aria-label="Next Project"> 
+            <Arrow class="rotate-180  focus:outline-1 focus:ring-none focus:outline-raw-blue stroke-raw-blue" />
+            </button> 
         </div>
     </div>
 </div> 

@@ -3,12 +3,12 @@
     import Pause from 'svelte-feathers/Pause.svelte';
     import ArrowLeft from 'svelte-feathers/ChevronLeft.svelte';
     import ArrowRight from 'svelte-feathers/ChevronRight.svelte';
-    import ArrowUp from 'svelte-feathers/ArrowUp.svelte';
+    import ArrowUp from 'svelte-feathers/ArrowUpCircle.svelte';
     import { config } from '$lib/config';
     import type { Project, AudioFile, AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
     import { playlist, currentTrack } from '$lib/store';
-
+    import Arrow from './Arrow.svelte';
 
     import { onMount
      } from 'svelte';
@@ -45,19 +45,7 @@
   
       return `${minutes}:${seconds}`;
     }
-
-/*    const transformArray = (inputArray: Project[]) => {
-    return inputArray.flatMap((item) => item.audioFiles.map((track) => (
-        {
-            title: track.title,
-            artist: item.collaborations,
-            project: item.slug,
-            file: track.audioFile
  
-        }))
-            )
-    };
- */
     const preloadAudioBuffers = async (playlist: AudioTrack[]) => {
         console.log("preload buffer")
       
@@ -121,8 +109,16 @@
         }
     }   
 
+    
+    function handleProgressBarClick(event: Event) {
+        const progressBar = event.target;
+        const clickPosition = event.clientX - progressBar.getBoundingClientRect().left;
+        const progressBarWidth = progressBar.clientWidth;
+        const clickedPercentage = clickPosition / progressBarWidth;
+        time = duration * clickedPercentage;
+        player.currentTime = time;
+    }
 
-  
     $: preloadAudioBuffers(tracks)
     $: changeAudio(selected);
 
@@ -136,7 +132,11 @@
     aria-label="open radio" 
     class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-8.5rem)] sm:top-[calc(100dvh-4rem)]'}" 
     >
-     <button class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center" on:click={() => (isOpen = !isOpen)}>
+  
+     <div class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
+        <button aria-label="View Playlist" on:click={(e) => (isOpen = !isOpen)} class="rounded-full">
+           <ArrowUp class=" h-6 w-6 {isOpen ? "rotate-180" : ""} mr-4 transition-all duration-3000" />
+        </button>
        {#key loaded}
          <audio 
             bind:this={player} 
@@ -152,25 +152,31 @@
         <Track audio={currentAudio} invert expand/>
         <div class="w-full pt-4 md:pt-0  md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
             <div class="absolute px-5 md:px-0 h-28 md:h-auto  md:relative flex gap-5 top-0 right-0 md:right-auto md:top-auto items-center">
-                <ArrowLeft class="hidden md:block" on:click={() => changeIndex(selected-1)}/>
+
+                <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
+                    <Arrow class="stroke-white  w-6 h-6" />
+                </button>
                 {#if paused} 
-                    <Play class="h-10 w-10 md:w-6 md:h-6" on:click={() =>player.play()}/> 
+                    <Play class="h-10 w-10 md:w-6 md:h-6 stroke-2" on:click={() =>player.play()}/> 
                 {:else}
                     <Pause class="h-10 w-10 md:w-6 md:h-6" on:click={() => player.pause() }/>
                 {/if}
-                <ArrowRight class="hidden md:block" on:click={() => changeIndex(selected+1)}/>
+                <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
+                    <Arrow class="stroke-white rotate-180 w-6 h-6"  on:click={() => changeIndex(selected+1)} />
+                </button>
+             
             </div>
             
-            <ul class="info flex list-none gap-1">
+            <ul class="info flex list-none gap-1 w-24 justify-end">
                 <li >{format(time)}</li>
                 <li> | </li>
                 <li class="time">{format(duration)}</li>
             </ul>
         </div>
       
-    </button>
+    </div>
     <div class="h-3">
-        <progress class="w-full h-3 align-top" value={time / duration || 0} /> 
+        <progress class="w-full h-3 align-top cursor-pointer border-raw-blue border-b" value={time / duration || 0}  on:click={handleProgressBarClick} aria-label="skip through track"/> 
     </div>
 
     <div class=" overflow-y-scroll border-b border-raw-blue h-[50vh]">
@@ -202,7 +208,6 @@
 <style lang="postcss">
     progress[value]::-webkit-progress-bar {
        @apply bg-raw-white;
-        border-bottom: #aec8fc solid 2px
     }
 
     progress[value]::-webkit-progress-value {
