@@ -3,7 +3,7 @@
     import Pause from 'svelte-feathers/Pause.svelte';
     import ArrowLeft from 'svelte-feathers/ChevronLeft.svelte';
     import ArrowRight from 'svelte-feathers/ChevronRight.svelte';
-    import ArrowUp from 'svelte-feathers/ArrowUp.svelte';
+    import ArrowUp from 'svelte-feathers/ArrowUpCircle.svelte';
     import { config } from '$lib/config';
     import type { Project, AudioFile, AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
@@ -45,19 +45,7 @@
   
       return `${minutes}:${seconds}`;
     }
-
-/*    const transformArray = (inputArray: Project[]) => {
-    return inputArray.flatMap((item) => item.audioFiles.map((track) => (
-        {
-            title: track.title,
-            artist: item.collaborations,
-            project: item.slug,
-            file: track.audioFile
  
-        }))
-            )
-    };
- */
     const preloadAudioBuffers = async (playlist: AudioTrack[]) => {
         console.log("preload buffer")
       
@@ -121,8 +109,16 @@
         }
     }   
 
+    
+    function handleProgressBarClick(event: Event) {
+        const progressBar = event.target;
+        const clickPosition = event.clientX - progressBar.getBoundingClientRect().left;
+        const progressBarWidth = progressBar.clientWidth;
+        const clickedPercentage = clickPosition / progressBarWidth;
+        time = duration * clickedPercentage;
+        player.currentTime = time;
+    }
 
-  
     $: preloadAudioBuffers(tracks)
     $: changeAudio(selected);
 
@@ -136,7 +132,11 @@
     aria-label="open radio" 
     class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-8.5rem)] sm:top-[calc(100dvh-4rem)]'}" 
     >
-     <button class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center" on:click={() => (isOpen = !isOpen)}>
+  
+     <div class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
+        <button aria-label="View Playlist" on:click={(e) => (isOpen = !isOpen)} class="rounded-full">
+           <ArrowUp class=" h-6 w-6 {isOpen ? "rotate-180" : ""} mr-4 transition-all duration-3000" />
+        </button>
        {#key loaded}
          <audio 
             bind:this={player} 
@@ -168,9 +168,9 @@
             </ul>
         </div>
       
-    </button>
+    </div>
     <div class="h-3">
-        <progress class="w-full h-3 align-top" value={time / duration || 0} /> 
+        <progress class="w-full h-3 align-top cursor-pointer border-raw-blue border-b" value={time / duration || 0}  on:click={handleProgressBarClick} aria-label="skip through track"/> 
     </div>
 
     <div class=" overflow-y-scroll border-b border-raw-blue h-[50vh]">
@@ -202,7 +202,6 @@
 <style lang="postcss">
     progress[value]::-webkit-progress-bar {
        @apply bg-raw-white;
-        border-bottom: #aec8fc solid 2px
     }
 
     progress[value]::-webkit-progress-value {
