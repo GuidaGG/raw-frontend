@@ -9,7 +9,7 @@
     let records = data.content.projects
 </script>
 
-<Page>
+<Page class="grainy-gradient">
 
 <div class="grid grid-cols-2 lg:grid-cols-3 gap-5 pb-20">
     {#each records as record}

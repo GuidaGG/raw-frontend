@@ -4,6 +4,7 @@
     import type { Media } from "$lib/types";
     import { config } from "$lib/config";
 
+
     export let video: Media
 
     let time: number = 0;
@@ -28,6 +29,16 @@
         player.pause()
         }
     }
+      
+    function handleProgressBarClick(event: Event) {
+        const progressBar = event.target;
+        const clickPosition = event.clientX - progressBar.getBoundingClientRect().left;
+        const progressBarWidth = progressBar.clientWidth;
+        const clickedPercentage = clickPosition / progressBarWidth;
+        time = duration * clickedPercentage;
+        player.currentTime = time;
+    }
+
   </script>
 
 
@@ -53,7 +64,7 @@
                         <VideoPause class="h-6 w-6"/>
                     {/if}
                 </button>
-                <progress class="w-full h-1" value={time / duration || 0} />
+                <progress class="w-full h-1 cursor-pointer" value={time / duration || 0} on:click={handleProgressBarClick} />
                 <ul class="info flex list-none gap-1">
                     <li >{format(time)}</li>
                     <li> | </li>

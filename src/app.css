@@ -24,7 +24,7 @@
         scrollbar-width: none;  /* Firefox */
     }
     .grainy-gradient {
-        background: linear-gradient(to bottom, white 0%, white 5%, #2d7aff 40%, white 80%);
+        background: linear-gradient(to bottom, white 0%, white 5%, #669eff 40%, white 80%);
     }
 }
 

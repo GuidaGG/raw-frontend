@@ -8,7 +8,7 @@
     import type { Project, AudioFile, AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
     import { playlist, currentTrack } from '$lib/store';
-
+    import Arrow from './Arrow.svelte';
 
     import { onMount
      } from 'svelte';
@@ -152,16 +152,22 @@
         <Track audio={currentAudio} invert expand/>
         <div class="w-full pt-4 md:pt-0  md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
             <div class="absolute px-5 md:px-0 h-28 md:h-auto  md:relative flex gap-5 top-0 right-0 md:right-auto md:top-auto items-center">
-                <ArrowLeft class="hidden md:block" on:click={() => changeIndex(selected-1)}/>
+
+                <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
+                    <Arrow class="stroke-white  w-6 h-6" />
+                </button>
                 {#if paused} 
-                    <Play class="h-10 w-10 md:w-6 md:h-6" on:click={() =>player.play()}/> 
+                    <Play class="h-10 w-10 md:w-6 md:h-6 stroke-2" on:click={() =>player.play()}/> 
                 {:else}
                     <Pause class="h-10 w-10 md:w-6 md:h-6" on:click={() => player.pause() }/>
                 {/if}
-                <ArrowRight class="hidden md:block" on:click={() => changeIndex(selected+1)}/>
+                <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
+                    <Arrow class="stroke-white rotate-180 w-6 h-6"  on:click={() => changeIndex(selected+1)} />
+                </button>
+             
             </div>
             
-            <ul class="info flex list-none gap-1">
+            <ul class="info flex list-none gap-1 w-24 justify-end">
                 <li >{format(time)}</li>
                 <li> | </li>
                 <li class="time">{format(duration)}</li>
