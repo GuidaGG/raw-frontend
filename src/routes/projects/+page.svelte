@@ -29,7 +29,7 @@
 </script>
 
 <Page>
-    <div class="mx-auto space-y-20">
+    <div class="mx-auto space-y-10 sm:space-y-20">
     {#each Object.entries(sortedProjects) as [type, projects]}
         {#if type != "Ongoing"}
         <div class="space-y-5 relative">
@@ -38,7 +38,7 @@
                 <thead>
                     <tr class="uppercase ">
                     <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
-                    <th class="w-4/5 sm:w-2/6">/TITLE</th>
+                    <th class="w-3/5 sm:w-2/6">/TITLE</th>
                     <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
                     {#if type === "Event" || type === "Exhibition" }
                         <th class="w-1/6 hidden md:table-cell">/VENUE</th>
@@ -84,7 +84,7 @@
     <div class="space-y-5 w-full">
         <h3 class="text-base uppercase font-medium">Network</h3>
         <div class="flex flex-col sm:flex-row gap-5 md:gap-0 justify-between">
-            <ul class="text-base w-2/6 border-raw-blue border">
+            <ul class="text-base w-full sm:w-2/6 border-raw-blue border">
                 <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
             {#each getFilteredValues(projects, "collaborations") as collab}
                 <li class="px-1">

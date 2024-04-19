@@ -3,7 +3,7 @@
     import Pause from 'svelte-feathers/Pause.svelte';
     import ArrowLeft from 'svelte-feathers/ChevronLeft.svelte';
     import ArrowRight from 'svelte-feathers/ChevronRight.svelte';
-    import ArrowUp from 'svelte-feathers/ArrowUpCircle.svelte';
+    import ArrowUp from 'svelte-feathers/BarChart2.svelte';
     import { config } from '$lib/config';
     import type { Project, AudioFile, AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
@@ -14,8 +14,6 @@
      } from 'svelte';
  
 
-    export let radio: Project[]
-    export let showPlaylist: boolean;
     export let hide: boolean;
     export let projectOverview: boolean;
 
@@ -130,12 +128,12 @@
  <div
 
     aria-label="open radio" 
-    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-8.5rem)] sm:top-[calc(100dvh-4rem)]'}" 
+    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-6.6rem)] sm:top-[calc(100dvh-4rem)]'}" 
     >
   
      <div class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
         <button aria-label="View Playlist" on:click={(e) => (isOpen = !isOpen)} class="rounded-full">
-           <ArrowUp class=" h-6 w-6 {isOpen ? "rotate-180" : ""} mr-4 transition-all duration-3000" />
+           <ArrowUp class="rotate-90 h-8 w-8 md:h-6 md:w-6 {isOpen ? "rotate-180" : ""} mr-4 transition-all duration-3000" />
         </button>
        {#key loaded}
          <audio 
@@ -149,25 +147,29 @@
             on:ended={() => changeIndex(selected+1)}
         />
         {/key} 
-        <Track audio={currentAudio} invert expand/>
-        <div class="w-full pt-4 md:pt-0  md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
-            <div class="absolute px-5 md:px-0 h-28 md:h-auto  md:relative flex gap-5 top-0 right-0 md:right-auto md:top-auto items-center">
+        <Track audio={currentAudio} invert expand class="pt-2 sm:pt-0 h-16 sm:h-auto overflow-hidden"/>
+        <div class="w-full pt-3 sm:pt-0 md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
+            <div class="absolute  px-5 md:px-0  md:h-auto  md:relative flex gap-5 top-3 right-0 md:right-auto md:top-auto items-center">
 
                 <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
                     <Arrow class="stroke-white  w-6 h-6" />
                 </button>
                 {#if paused} 
-                    <Play class="h-10 w-10 md:w-6 md:h-6 stroke-2" on:click={() =>player.play()}/> 
+                    <button on:click={() =>player.play()}>
+                        <Play class="h-8 w-8 md:w-6 md:h-6 stroke-2" /> 
+                    </button>
                 {:else}
-                    <Pause class="h-10 w-10 md:w-6 md:h-6" on:click={() => player.pause() }/>
+                    <button  on:click={() => player.pause() }>
+                        <Pause class="h-8 w-8md:w-6 md:h-6"/>
+                    </button>
                 {/if}
                 <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
-                    <Arrow class="stroke-white rotate-180 w-6 h-6"  on:click={() => changeIndex(selected+1)} />
+                    <Arrow class="stroke-white rotate-180 w-6 md:h-6"  on:click={() => changeIndex(selected+1)} />
                 </button>
              
             </div>
             
-            <ul class="info flex list-none gap-1 w-24 justify-end">
+            <ul class="info flex list-none gap-1 w-24 sm:justify-end">
                 <li >{format(time)}</li>
                 <li> | </li>
                 <li class="time">{format(duration)}</li>

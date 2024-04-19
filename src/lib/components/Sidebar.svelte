@@ -12,7 +12,8 @@
     const titles = {
         Event: "/events",
         Ongoing: "/ongoing",
-        Release: "/releases"
+        Release: "/releases",
+        Exhibition: "/exhibitions"
     }
 
     $: searchInput = ""

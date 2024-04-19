@@ -8,7 +8,7 @@ export let expand = false;
 
 
 
-<div class="block md:flex w-4/5  md:w-full gap-3 items-center max-w-[80%] overflow-clip  text-left">
+<div class="block md:flex w-full gap-3 items-center max-w-[80%] overflow-clip  text-left {$$restProps.class}" >
     <h4 class="md:border-r {!invert ? "border-raw-blue" : "border-white"} pr-3 pb-0 font-normal text-nowrap">{audio.title}</h4>
     {#if expand}
     <div class="text-xs text-nowrap">

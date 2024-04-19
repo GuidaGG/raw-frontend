@@ -11,7 +11,7 @@
 
 <Page class="grainy-gradient">
 
-<div class="grid grid-cols-2 lg:grid-cols-3 gap-5 pb-20">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5 pb-20">
     {#each records as record}
        <div class=" aspect-square border border-raw-blue relative overflow-hidden">
             <div class="bg-blue-200 w-full h-full bg-raw-blue-light" >
@@ -21,7 +21,7 @@
                 </a>
                 {/if}
             </div>
-            <div class="flex flex-col md:opacity-0 hover:opacity-100 absolute top-0  w-full md:h-full z-6 bg-white px-2 pt-2 border-b border-raw-blue md:border-none md:p-5 justify-between">
+            <div class="flex flex-col md:opacity-0 hover:opacity-100 absolute top-0  w-full md:h-full z-6 bg-white px-2 pt-3 border-b border-raw-blue md:border-none md:p-5 justify-between">
                 <a href="/projects/{record.slug}">
                     <h2 class="text-xl 2xl:text-4xl">{record.title}</h2>
                     {#if record.subtitle}

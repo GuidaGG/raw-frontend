@@ -24,7 +24,7 @@
         
 </script>
 
-<div class="max-w-screen-2xl pr-5 pl-20 pt-10">
+<div class="max-w-screen-2xl px-0  sm:px-5 sm:pl-20 pt-10">
     <div class="flex flex-col-reverse lg:flex-row w-full cursor-all-scroll ">
         {#key project.images}
                 <div class="w-full lg:w-2/5 shrink-0 lg:pr-28 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images}>
@@ -36,10 +36,10 @@
         <div class="px-5 lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll no-scrollbar"  on:scroll={scroll} >
             <div class="px-r sm:pr-20 pb-10 ">
         
-                <div class="pb-5 uppercase text-base  flex gap-2 max-h-screen pt-24 md:pt-40 ">
-                    {formatDate(project.date)} |
+                <div class="pb-5 uppercase text-base flex flex-col sm:flex-row gap-2 max-h-screen pt-24 md:pt-40 ">
+                    {formatDate(project.date)} <span class="hidden sm:inline">|</span>
                     {#each project.project_categories as cat, index}
-                        <span class="font-medium after:content-['|'] after:pl-2 last:after:content-none">{cat.name}</span>
+                        <span class="font-medium sm:after:content-['|'] after:pl-2 last:after:content-none">{cat.name}</span>
                     {/each}
                 </div>
                 <h1>{project.title}</h1>

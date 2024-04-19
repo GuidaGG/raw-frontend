@@ -4,7 +4,7 @@
         <style>
             g {
             fill: none;
-            stroke-width: 2px;
+            stroke-width: 3px;
           }
         </style>
       </defs>
