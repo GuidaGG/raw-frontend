@@ -1,18 +1,6 @@
-# create-svelte
+# Research and Waves Website Repository
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Research and Waves is an artistic research project and collective that explores the space between curatorial practice and artistic methodology. We aim to draw enriching connections and create a conversation between art, music, technology and society through experimental events and presentation formats in the context of art and culture.
 
 ## Developing
 
