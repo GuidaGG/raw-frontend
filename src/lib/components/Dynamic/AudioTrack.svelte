@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AudioTrack } from "$lib/types";
-import { playlist, currentTrack } from '$lib/store.js';
+import { playlist, currentTrack, reload } from '$lib/store.js';
 import Play from 'svelte-feathers/Play.svelte'
 import Download from 'svelte-feathers/Download.svelte'
 import Track from "../Radio/Track.svelte";
@@ -12,12 +12,13 @@ let radio: AudioTrack[] = []
 function playTrack(track: AudioTrack) {
        const index = radio.findIndex(audio => audio.file?.url === track.file?.url);
        if(index > -1){
-            currentTrack.set(index)
+            currentTrack.set(index);
        }else{
-         const newPlaylist = [...radio, track]
-         playlist.set(newPlaylist) 
-         currentTrack.set(newPlaylist.length -1)
+         const newPlaylist = [...radio, track];
+         playlist.set(newPlaylist);
+         currentTrack.set(newPlaylist.length -1);
        }  
+       reload.set(true);
 }
 
 playlist.subscribe(value =>
