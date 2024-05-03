@@ -7,7 +7,7 @@
     import { config } from '$lib/config';
     import type { Project, AudioFile, AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
-    import { playlist, currentTrack } from '$lib/store';
+    import { playlist, currentTrack, reload } from '$lib/store';
     import Arrow from './Arrow.svelte';
 
     import { onMount
@@ -24,6 +24,7 @@
 	let time = 0;
     let paused = true;
     let tracks: AudioTrack[];
+    let reloadRadio = false;
     let isOpen = false;
 
     $: audioBuffers = [];
@@ -93,6 +94,10 @@
         selected = value
     });
 
+    reload.subscribe(value => {
+        reloadRadio = value;
+    });
+
     $: currentAudio = tracks[selected];
     
     const changeIndex = (index:number) => {
@@ -101,10 +106,12 @@
     }
 
     const changeAudio = (index:number) => {
+        
         if(player){
             player.src = audioBuffers[index].src;
             player.play();  
         }
+        reload.set(false);
     }   
 
     
@@ -118,7 +125,7 @@
     }
 
     $: preloadAudioBuffers(tracks)
-    $: changeAudio(selected);
+    $: changeAudio(selected, reloadRadio);
 
 
 </script>  

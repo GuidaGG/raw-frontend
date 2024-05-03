@@ -33,7 +33,7 @@
                     {/each}
                 </div>
         {/key}
-        <div class="px-5 lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll no-scrollbar"  on:scroll={scroll} >
+        <div class="px-5 lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll no-scrollbar pb-10"  on:scroll={scroll} >
             <div class="px-r sm:pr-20 pb-10 ">
         
                 <div class="pb-5 uppercase text-base flex flex-col sm:flex-row gap-2 max-h-screen pt-24 md:pt-40 ">

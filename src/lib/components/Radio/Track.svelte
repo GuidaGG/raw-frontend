@@ -15,7 +15,7 @@ export let expand = false;
         {#if audio.project.title}
             <a href="/projects/{audio.project.slug}/" class="pr-1 {invert? "text-white": "text-raw-blue"}"> {audio.project.title} </a>
         {/if}
-        {#if audio.review.title}
+        {#if audio.review?.title}
             <a href="/reviews/{audio.review.slug}/" class="pr-1 {invert? "text-white": "text-raw-blue"}"> {audio.review.title} </a>
         {/if}
         {#if audio.artist?.length}

@@ -13,3 +13,4 @@ export const contact = writable({
 
 export const playlist = writable([])
 export const currentTrack = writable(0)
+export const reload = writable(true)
