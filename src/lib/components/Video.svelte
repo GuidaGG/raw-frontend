@@ -51,6 +51,7 @@
             bind:duration
             bind:paused
             on:click={play}
+            class="max-w-[99.9%]"
         >
             <track kind="captions" />
         </video>
