@@ -15,7 +15,7 @@
 		buttonView.url = value.url;
 	})
 
-	let active = "bg-raw-blue";
+	let active = "underline";
 	$: currentPage = $page.route.id
 
 	
@@ -33,35 +33,38 @@
 					<Button 
 						invert
 						link="/"
-						class="text-xs md:text-xl px-5 py-1 sm:py-2">
+						class="text-xs md:text-base px-5 sm:px-5 py-1 ">
 						{buttonView.title}
 						
 					</Button>
 				{/if}
 		</div>
-		<nav class=" sm:w-auto md:ml-auto list-none flex gap-2 justify-end md:justify-between items-center">
-			<li class=" pr-3 border-raw-blue border-r">
-				<a href="/projects" class="h-8 w-8"  >
+		<nav class=" sm:w-auto md:ml-auto list-none flex gap-1 justify-end md:justify-between items-center">
+			<li class=" ">
+				<a href="/projects" class="h-4" >
 					<div class="rounded-full p-2 stroke-white transition-all {currentPage === "/projects" ? active : ""}">
-						<List tabindex="-1" class="h-8 w-8 focus:outline-none {currentPage === "/projects" ? "stroke-white": ""}" />
+						<!-- <List tabindex="-1" class="h-8 w-8 focus:outline-none {currentPage === "/projects" ? "stroke-white": ""}" /> -->
+						List
 					</div>
 				</a>
 			</li>
+			|
 			<li class="border-r border-raw-blue pr-3 md:border-none">
-				<div class="rounded-full p-2 stroke-white transition-all {currentPage === "/catalog" ? active : ""}">
-					<a href="/catalog" class="h-8 w-8 ">
-						<ShoppingBag tabindex="-1" class="h-7 w-7 focus:outline-none {currentPage === "/catalog" ? "stroke-white": ""}" />
+				<div class="rounded-full p-1 stroke-white transition-all {currentPage === "/catalog" ? active : ""}">
+					<a href="/catalog" >
+						<!-- <ShoppingBag tabindex="-1" class="h-7 w-7 focus:outline-none {currentPage === "/catalog" ? "stroke-white": ""}" /> -->
+						Catalog
 					</a>
 				</div>
 		
 			</li>
-			<li class="md:hidden ">
+		<!-- 	<li class="md:hidden ">
 				<a href="/search" class="h-8 w-8" >
 					<div class="rounded-full p-2 stroke-white transition-all {currentPage === "/search" ? active : ""}">
 						<Search tabindex="-1" class="h-8 w-8 focus:outline-none {currentPage === "/search" ? "stroke-white": ""}" />
 					</div>
 				</a>
-			</li>
+			</li> -->
 
 		</nav>
 	</div>
