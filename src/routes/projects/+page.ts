@@ -6,7 +6,7 @@ import { flattenJson } from '$lib/utils';
 
 const projectsQuery = gql`
      query getProjects{
-        projects(sort: [ "project_type.name:desc", "date" ]) {
+        projects(sort: [ "date:desc", "project_type.name:desc" ], pagination: { limit: -1}) {
             data{
                 id
                 attributes{ 
@@ -16,6 +16,7 @@ const projectsQuery = gql`
                     slug
                     coordinate
                     date
+                    endDate
                     funding
                     collaborations {
                       name 

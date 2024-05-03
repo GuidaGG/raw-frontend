@@ -15,9 +15,10 @@ const projectsQuery = gql`
                     description
                     slug
                     date
+                    endDate
                     coordinate
                     funding
-                    images {
+                    images(pagination: {limit: -1}) {
                        data {
                           id 
                           attributes { 
