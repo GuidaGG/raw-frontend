@@ -164,5 +164,6 @@ export type Project = {
     project_type: ProjectCategory;
     funding: string;
     audioFiles: AudioFile[];
+    endDate?: string;
 
 }
