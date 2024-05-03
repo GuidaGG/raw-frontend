@@ -4,6 +4,7 @@
     import { formatDate } from '$lib/utils.js';
     import { transformTracksProject } from '$lib/utils.js';
     import AudioTrack from '$lib/components/Dynamic/AudioTrack.svelte';
+  import Video from '$lib/components/Video.svelte';
 
     export let data;
 
@@ -24,22 +25,26 @@
         
 </script>
 
-<div class="max-w-screen-2xl px-0  sm:px-5 sm:pl-20 pt-10">
+<div class="max-w-screen-2xl px-0  md:px-5 md:pl-20 pt-10 pb-16 md:pb-0">
     <div class="flex flex-col-reverse lg:flex-row w-full cursor-all-scroll ">
         {#key project.images}
-                <div class="w-full lg:w-2/5 shrink-0 lg:pr-28 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images}>
-                    {#each project.images as image}
-                            <Image size="large" {image} />
+                <div class="w-full lg:w-3/6 shrink-0 lg:pr-10 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images} >
+                    {#each project.images as media}
+                            {#if media.formats}
+                                <Image size="large" image={media} />
+                            {:else}
+                                <Video video={media} />
+                            {/if}
                     {/each}
                 </div>
         {/key}
         <div class="px-5 lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll no-scrollbar pb-10"  on:scroll={scroll} >
             <div class="px-r sm:pr-20 pb-10 ">
         
-                <div class="pb-5 uppercase text-base flex flex-col sm:flex-row gap-2 max-h-screen pt-24 md:pt-40 ">
-                    {formatDate(project.date)} <span class="hidden sm:inline">|</span>
+                <div class="pb-5 uppercase text-base gap-2 max-h-screen pt-24 md:pt-40 flex flex-col sm:block  ">
+                    {formatDate(project.date)} <span class="hidden sm:inline"></span>
                     {#each project.project_categories as cat, index}
-                        <span class="font-medium sm:after:content-['|'] after:pl-2 last:after:content-none">{cat.name}</span>
+                        <span class="font-medium sm:after:content-['|'] sm:pl-2 after:pl-2 last:after:content-none">{cat.name}</span>
                     {/each}
                 </div>
                 <h1>{project.title}</h1>

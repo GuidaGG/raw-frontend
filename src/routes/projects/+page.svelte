@@ -23,11 +23,12 @@
         Event: "events",
         Ongoing: "ongoing",
         Release: "releases",
-        Exhibition: "exhibitions"
+        Exposition: "expositions"
     }
     
 </script>
 
+<!-- <pre>{JSON.stringify(projects, null, 2)}</pre> -->
 <Page>
     <div class="mx-auto space-y-10 sm:space-y-20">
     {#each Object.entries(sortedProjects) as [type, projects]}
@@ -55,14 +56,14 @@
                         <td><a href="/projects/{project.slug}">{project.title}</a></td>
                         <td class="hidden sm:table-cell">
                         {#each project.project_categories as cat, index}
-                        <span class="{index < project.project_categories.length-1 ? "after:content-[',']" : "" }">{cat.name}</span>
+                        <span class="{index < project.project_categories.length-1 ? "after:content-[','] after:pr-1" : "" }">{cat.name}</span>
                         {/each}
                         </td>
-                        {#if type === "Event" || type === "Exhibition" }
+                        {#if type === "Event" || type === "Exposition" }
                             <td class="hidden md:table-cell">
                             {#each project.place as place, index}
                                 {#if place.url }
-                                    <a class="{index < project.place.length-1 ? "after:content-[',']" : "" }" href={place.url}>{place.name}</a>
+                                    <a target="_blank" class="{index < project.place.length-1 ? "after:content-[','] after:pr-1" : "" }" href={place.url}>{place.name}</a>
                                 {:else}
                                     {place.name}
                                 {/if}
@@ -71,7 +72,12 @@
                         
                             </td>
                         {/if}
-                        <td>{formatDate(project.date)}</td>
+                        <td>
+                            {formatDate(project.date)} 
+                            {#if project.endDate}
+                                <span> - {formatDate(project.endDate)}  </span>
+                            {/if}
+                        </td>
                         </tr>
             
                     {/each}
@@ -89,7 +95,7 @@
             {#each getFilteredValues(projects, "collaborations") as collab}
                 <li class="px-1">
                     {#if collab.url }
-                        <a href={collab.url}>{collab.name}</a>
+                        <a target="_blank" href={collab.url}>{collab.name}</a>
                     {:else}
                         {collab.name}
                     {/if}
@@ -102,7 +108,7 @@
             {#each getFilteredValues(projects, "place") as collab}
                 <li class="px-1">
                     {#if collab.url }
-                        <a href={collab.url}>{collab.name}</a>
+                        <a target="_blank" href={collab.url}>{collab.name}</a>
                     {:else}
                         {collab.name}
                     {/if}
@@ -132,7 +138,7 @@
                         <td class="hidden md:table-cell">
                             {#each project.place as place}
                                 {#if place.url }
-                                    <a href={place.url}>{place.name}</a>
+                                    <a target="_blank" href={place.url}>{place.name}</a>
                                 {:else}
                                     {place.name}
                                 {/if}

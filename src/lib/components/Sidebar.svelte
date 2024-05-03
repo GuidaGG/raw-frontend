@@ -13,7 +13,7 @@
         Event: "/events",
         Ongoing: "/ongoing",
         Release: "/releases",
-        Exhibition: "/exhibitions"
+        Exposition: "/expositions"
     }
 
     $: searchInput = ""

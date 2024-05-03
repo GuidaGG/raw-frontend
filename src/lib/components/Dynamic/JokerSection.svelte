@@ -63,7 +63,7 @@
         }
 
         .one_column  .graphics.borders {
-                @apply border border-raw-blue border-b-0;
+                @apply border border-raw-blue ;
         }
 
 
