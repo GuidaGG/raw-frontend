@@ -27,6 +27,10 @@ const RadioQuery = gql`
             data{
                 id
                 attributes{ 
+                    authors {
+                      name
+                      url
+                    }
                     title
                     audioFile {
                       data {

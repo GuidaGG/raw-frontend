@@ -46,6 +46,10 @@ const projectsQuery = gql`
                         id
                         attributes{ 
                           title
+                          authors {
+                            name
+                            url
+                          }
                           audioFile {
                             data {
                                 id 
