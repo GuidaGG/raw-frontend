@@ -119,6 +119,10 @@ export type AudioTrack = {
         url: string;
         name: string;
     }
+    download:  {
+        url: string;
+        name: string;
+    }
 }
   
  export type Collaboration = {
