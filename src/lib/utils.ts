@@ -70,7 +70,8 @@ export function flattenJson(json: any): any {
               slug: item.slug,
               title: item.title
             },
-            file: track.audioFile
+            file: track.audioFile,
+            download: track.audioFile_download
  
         }))
             )
@@ -89,7 +90,8 @@ export function flattenJson(json: any): any {
                 slug: track.review?.slug,
                 title: track.review?.title,
               },
-              file: track.audioFile
+              file: track.audioFile,
+              download: track.audioFile_download
    
           }))
           )

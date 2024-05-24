@@ -4,6 +4,7 @@ import { playlist, currentTrack, reload } from '$lib/store.js';
 import Play from 'svelte-feathers/Play.svelte'
 import Download from 'svelte-feathers/Download.svelte'
 import Track from "../Radio/Track.svelte";
+import { config } from "$lib/config";
 
 export let tracks: AudioTrack[];
 
@@ -30,8 +31,11 @@ playlist.subscribe(value =>
         <div class="flex gap-4 items-center border-t last-of-type:border-b  border-raw-blue  w-full py-2  px-5 justify-between">
             <Track {audio} invert />
             <div class="flex gap-4">
+                {#if audio.download}
+                <a  target="_blank" href={`${config.apiUrl}${audio.download.url}`} download="track.mp3">  <Download class="h-7 w-7 cursor-pointer"/></a>
+                {/if}
             <Play class="h-7 w-7 cursor-pointer" on:click={() => playTrack(audio)}/>
-            <Download class="h-7 w-7 cursor-pointer"/>
+          
             </div>
         </div> 
     {/each}
