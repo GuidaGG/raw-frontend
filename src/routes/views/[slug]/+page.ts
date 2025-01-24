@@ -148,6 +148,17 @@ const projectsQuery = gql`
                           }
                         }
                     }
+                    featured_image {
+                       data {
+                          id 
+                          attributes { 
+                            url
+                            formats
+                            alternativeText
+                            name
+                          }
+                        }
+                    }
                     place {
                       name
                       url

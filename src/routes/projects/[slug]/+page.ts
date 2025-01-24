@@ -18,6 +18,7 @@ const projectsQuery = gql`
                     endDate
                     coordinate
                     funding
+                    list_view
                     images(pagination: {limit: -1}) {
                        data {
                           id 
@@ -29,7 +30,7 @@ const projectsQuery = gql`
                           }
                         }
                     }
-                    collaborations {
+                    collaborations(pagination: {limit: -1}) {
                       name 
                       url
                     } 

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { Project, ProjectsSection } from "$lib/types";
     import Page from "$lib/components/Page.svelte";
     import Image from "$lib/components/Image.svelte";
     import { formatDate } from '$lib/utils.js';
@@ -6,7 +7,11 @@
 
     export let data;
 
-    let records = data.content.projects
+    let records = data.content.projects;
+
+    function getImage(project: Project) {
+        return project.featured_image ?? project.images?.[0];
+    }
 </script>
 
 <Page class="grainy-gradient">
@@ -15,9 +20,9 @@
     {#each records as record}
        <div class=" aspect-square border border-raw-blue relative overflow-hidden">
             <div class="bg-blue-200 w-full h-full bg-raw-blue-light" >
-                {#if record.images}
+                {#if record.images || record.featured_image}
                 <a href="/projects/{record.slug}">
-                <Image size="large" class="w-full h-full" image={record.images[0]} />
+                <Image size="large" class="w-full h-full" image={getImage(record)} />
                 </a>
                 {/if}
             </div>
