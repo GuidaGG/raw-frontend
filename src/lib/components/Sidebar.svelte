@@ -42,7 +42,7 @@
                     </ul>
             </div>
         {/each}
-        <div>
+      <!--   <div>
             <h3 class="uppercase font-medium">/People</h3>
             <ul>
                 {#each getFilteredValues(data, "collaborations") as collab}
@@ -71,7 +71,7 @@
                 </li>
             {/each}
             </ul>
-        </div>
+        </div> -->
     </div>
 
 </div>

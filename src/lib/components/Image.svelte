@@ -6,12 +6,11 @@
     export let size: "small" | "thumbnail" | "large" | "medium" | null = null
 
     
-    let url = size != null && image?.formats[size]?.url ? image?.formats[size]?.url : image?.url 
+    let url = size != null && image?.formats?.[size] ? image?.formats[size]?.url : image?.url 
     
     </script>
 
     {#if image}
-
     <img
         class={` object-cover w-full ${$$restProps.class}` }
         src={`${config.apiUrl}${url}`} 

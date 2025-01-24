@@ -31,7 +31,8 @@
 <!-- <pre>{JSON.stringify(projects, null, 2)}</pre> -->
 <Page>
     <div class="mx-auto space-y-10 sm:space-y-20">
-    {#each Object.entries(sortedProjects) as [type, projects]}
+
+     {#each Object.entries(sortedProjects) as [type, projects]}
         {#if type != "Ongoing"}
         <div class="space-y-5 relative">
             <h3 class="text-base uppercase font-medium">{titles[type]}</h3>
@@ -49,7 +50,6 @@
                 </thead>
                 <tbody >
                     {#each projects as project}
-                    <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->
                 
                     <tr>
                         <td class="hidden sm:table-cell">{project.coordinate}</td>
@@ -85,39 +85,42 @@
             </table>
         </div>
         {/if}
-    {/each}
+    {/each} 
 
-    <div class="space-y-5 w-full">
+    <div class="space-y-5 w-full">  
         <h3 class="text-base uppercase font-medium">Network</h3>
         <div class="flex flex-col sm:flex-row gap-5 md:gap-0 justify-between">
+            {#if getFilteredValues(projects, "collaborations").length > 0}
             <ul class="text-base w-full sm:w-2/6 border-raw-blue border">
                 <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
-            {#each getFilteredValues(projects, "collaborations") as collab}
-                <li class="px-1">
-                    {#if collab.url }
-                        <a target="_blank" href={collab.url}>{collab.name}</a>
-                    {:else}
-                        {collab.name}
-                    {/if}
-                </li>
-            {/each}
-            </ul>
-
-            <ul class="text-base border-raw-blue border">
-                <li class="uppercase font-medium border-raw-blue border-b p-1">/ORGANIZATIONS</li>
-            {#each getFilteredValues(projects, "place") as collab}
-                <li class="px-1">
-                    {#if collab.url }
-                        <a target="_blank" href={collab.url}>{collab.name}</a>
-                    {:else}
-                        {collab.name}
-                    {/if}
-                </li>
-            {/each}
-            </ul>
+                {#each getFilteredValues(projects, "collaborations") as collab}
+                    <li class="px-1">
+                        {#if collab.url }
+                            <a target="_blank" href={collab.url}>{collab.name}</a>
+                        {:else}
+                            {collab.name}
+                        {/if}
+                    </li>
+                {/each}
+                </ul>
+            {/if}
+            {#if getFilteredValues(projects, "place").length > 0}
+                <ul class="text-base border-raw-blue border">
+                    <li class="uppercase font-medium border-raw-blue border-b p-1">/ORGANIZATIONS</li>
+                {#each getFilteredValues(projects, "place") as collab}
+                    <li class="px-1">
+                        {#if collab.url }
+                            <a target="_blank" href={collab.url}>{collab.name}</a>
+                        {:else}
+                            {collab.name}
+                        {/if}
+                    </li>
+                {/each}
+                </ul>
+            {/if}
         </div>
     </div>
-
+    {#if sortedProjects["Ongoing"] }
         <div class="space-y-5 relative">
             <h3 class="text-base uppercase font-medium">Ongoing</h3>
             <table class="table-fixed text-left text-base border-collapse w-full">
@@ -129,27 +132,25 @@
                     </tr>
                 </thead>
                 <tbody >
-                    {#each sortedProjects["Ongoing"] as project}
-                    <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->
-                
-                    <tr>
-                        <td><a href="/projects/{project.slug}">{project.title}</a></td>
-                        <td>{project.funding ? project.funding : "none"}</td>
-                        <td class="hidden md:table-cell">
-                            {#each project.place as place}
-                                {#if place.url }
-                                    <a target="_blank" href={place.url}>{place.name}</a>
-                                {:else}
-                                    {place.name}
-                                {/if}
-                            {/each}
-                            </td>
-                        </tr>
-            
-                    {/each}
-                </tbody>
-            </table>
-        </div>
+                        {#each sortedProjects["Ongoing"] as project}
+                        <tr>
+                            <td><a href="/projects/{project.slug}">{project.title}</a></td>
+                            <td>{project.funding ? project.funding : "none"}</td>
+                            <td class="hidden md:table-cell">
+                                {#each project.place as place}
+                                    {#if place.url }
+                                        <a target="_blank" href={place.url}>{place.name}</a>
+                                    {:else}
+                                        {place.name}
+                                    {/if}
+                                {/each}
+                                </td>
+                            </tr>
+                        {/each}
+                    </tbody>
+                </table>
+            </div>  
+        {/if}
     </div>
     <div class="mx-auto mt-20">
         <Contact section={{title:"Contact", subtitle:"", __typename:""}} />

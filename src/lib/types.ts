@@ -169,5 +169,6 @@ export type Project = {
     funding: string;
     audioFiles: AudioFile[];
     endDate?: string;
+    featured_image: Media[];
 
 }
