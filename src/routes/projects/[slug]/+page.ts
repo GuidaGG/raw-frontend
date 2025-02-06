@@ -42,6 +42,20 @@ const projectsQuery = gql`
                       name
                       url
                     }
+                    downloads {
+                      download_file {
+                        data {
+                                id 
+                                attributes { 
+                                    url
+                                    formats
+                                    alternativeText
+                                    name
+                                }
+                            }
+                      }
+                      display_name 
+                    }
                     tracks {
                       data{
                         id

@@ -5,6 +5,7 @@
     import { transformTracksProject } from '$lib/utils.js';
     import AudioTrack from '$lib/components/Dynamic/AudioTrack.svelte';
   import Video from '$lib/components/Video.svelte';
+  import Download from '$lib/components/Download.svelte';
 
     export let data;
 
@@ -42,7 +43,13 @@
             <div class="px-r sm:pr-20 pb-10 ">
         
                 <div class="pb-5 uppercase text-base gap-2 max-h-screen pt-24 md:pt-40 flex flex-col sm:block  ">
-                    {formatDate(project.date)} <span class="hidden sm:inline"></span>
+                    {formatDate(project.date)} 
+                    {#if project.endDate}
+                    <span class="hidden sm:inline">
+                       - {formatDate(project.endDate)}
+
+                    </span>
+                    {/if}
                     {#each project.project_categories as cat, index}
                         <span class="font-medium sm:after:content-['|'] sm:pl-2 after:pl-2 last:after:content-none">{cat.name}</span>
                     {/each}
@@ -51,7 +58,10 @@
                 {#if project.subtitle}
                     <h2>{project.subtitle}</h2>
                 {/if}
-                <div class="text-sm leading-3 pt-2">RAW {project.coordinate}</div>
+                {#if project.coordinate}
+                    <div class="text-sm leading-3 pt-2">{project.coordinate}</div>
+                {/if}
+               
                 {#if project.tracks}
                     <div class="pt-10">
                         <AudioTrack tracks={projectTracks} />
@@ -69,6 +79,10 @@
                 {#if project.links.length}
                 <Sublist values={project.links} label="Links" />
                 {/if}   
+
+                {#if project.downloads.length}
+                    <Download values={project.downloads} label="Downloads" />
+                {/if}
                 {#if project.funding}
                     <div class="space-y-2 w-full">
                         <h3 class="text-base uppercase font-medium">/Funding</h3>
