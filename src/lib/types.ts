@@ -25,6 +25,11 @@ export type Link = {
     url: string;
 }
 
+export type Download = {
+    download_file: Media;
+    display_name: string;
+}
+
 export type JokerSection= {
     title: string;
     subtitle: string;
@@ -130,10 +135,7 @@ export type AudioTrack = {
     url: string | null;
   };
   
-
-
 // PAGE TYPES
-
 export type PageContents =  {
     __typename: string;
     id: number;
@@ -157,7 +159,7 @@ export type ProjectType = {
     name: string;
     slug:string;
     name_plural: string;
-    display_venue: string;
+    display_venue: boolean;
 }
 
 export type Project = {
