@@ -8,23 +8,31 @@
     export let data
 
     const projects = data.content.projects;
-    const sortedProjects: Record<string, Project[]> = projects.reduce((acc: any, project: Project) => {
-		let type = project?.project_type?.name;
-		if (!acc[type]) {
-			acc[type] = [];
-		}
-		acc[type].push(project);
-		return acc;
-	}, {});
+    const sortedProjects: Record<string, { 
+    display_name: string; 
+    display_venue: boolean; 
+    projects: Project[]; 
+}> = projects.reduce((acc: Record<string, any>, project: Project) => {  
+    const type = project?.project_type?.name;  
+    if (!type) return acc; // Skip projects without a valid type  
+
+    const displayVenue = project?.project_type?.display_venue ?? false; // Default to false if undefined  
+    const displayName = project?.project_type?.name_plural ?? type; // Fallback to type if name_plural is missing  
+
+    if (!acc[type]) {  
+        acc[type] = {  
+            display_name: displayName,  
+            display_venue: displayVenue,  
+            projects: [],  
+        };  
+    }  
+
+    acc[type].projects.push(project);  
+
+    return acc;  
+}, {});  
 
 
-
-    const titles = {
-        Event: "events",
-        Ongoing: "ongoing",
-        Release: "releases",
-        Exposition: "expositions"
-    }
     
 </script>
 
@@ -32,35 +40,37 @@
 <Page>
     <div class="mx-auto space-y-10 sm:space-y-20">
 
-     {#each Object.entries(sortedProjects) as [type, projects]}
+    {#each Object.entries(sortedProjects) as [type, { display_name, display_venue, projects }]}
+    
         {#if type != "Ongoing"}
         <div class="space-y-5 relative">
-            <h3 class="text-base uppercase font-medium">{titles[type]}</h3>
+            <h3 class="text-base uppercase font-medium">{display_name}</h3>
             <table class="table-fixed text-left text-base border-collapse w-full border-raw-blue border">
                 <thead>
                     <tr class="uppercase ">
-                    <th class="w-1/6 hidden sm:table-cell ">/COORDINATE</th>
+                    <th class="w-1/6 hidden xl:table-cell ">/COORDINATE</th>
                     <th class="w-3/5 sm:w-2/6">/TITLE</th>
-                    <th class="w-1/6 hidden sm:table-cell ">/CATEGORY</th>
-                    {#if type === "Event" || type === "Exhibition" }
-                        <th class="w-1/6 hidden md:table-cell">/VENUE</th>
+                    <th class="w-1/6 ">/CATEGORY</th>
+                    {#if display_venue }
+                        <th class="w-1/6 hidden lg:table-cell">/VENUE</th>
                     {/if}
-                    <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"}">/DATE</th>
+                    <th class="w-1/ {type=== "Release" ? "md:w-2/6" : "md:w-1/6"} hidden md:table-cell " >/DATE</th>
                     </tr>
                 </thead>
                 <tbody >
                     {#each projects as project}
                 
                     <tr>
-                        <td class="hidden sm:table-cell">{project.coordinate}</td>
+                        <td class="hidden xl:table-cell">{project.coordinate}</td>
                         <td><a href="/projects/{project.slug}">{project.title}</a></td>
-                        <td class="hidden sm:table-cell">
+                        <td >
                         {#each project.project_categories as cat, index}
                         <span class="{index < project.project_categories.length-1 ? "after:content-[','] after:pr-1" : "" }">{cat.name}</span>
                         {/each}
                         </td>
-                        {#if type === "Event" || type === "Exposition" }
-                            <td class="hidden md:table-cell">
+                        {#if display_venue && project.place }
+                            <td class="hidden lg:table-cell">
+
                             {#each project.place as place, index}
                                 {#if place.url }
                                     <a target="_blank" class="{index < project.place.length-1 ? "after:content-[','] after:pr-1" : "" }" href={place.url}>{place.name}</a>
@@ -72,8 +82,10 @@
                         
                             </td>
                         {/if}
-                        <td>
-                            {formatDate(project.date)} 
+                        <td class="hidden md:table-cell">
+                            {#if project.date}
+                                {formatDate(project.date)} 
+                            {/if}
                             {#if project.endDate}
                                 <span> - {formatDate(project.endDate)}  </span>
                             {/if}
@@ -89,7 +101,7 @@
 
     <div class="space-y-5 w-full">  
         <h3 class="text-base uppercase font-medium">Network</h3>
-        <div class="flex flex-col sm:flex-row gap-5 md:gap-0 justify-between">
+        <div class="flex flex-col sm:flex-row gap-5 md:gap-10 ">
             {#if getFilteredValues(projects, "collaborations").length > 0}
             <ul class="text-base w-full sm:w-2/6 border-raw-blue border">
                 <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
@@ -105,7 +117,7 @@
                 </ul>
             {/if}
             {#if getFilteredValues(projects, "place").length > 0}
-                <ul class="text-base border-raw-blue border">
+                <ul class="text-base border-raw-blue border h-min">
                     <li class="uppercase font-medium border-raw-blue border-b p-1">/ORGANIZATIONS</li>
                 {#each getFilteredValues(projects, "place") as collab}
                     <li class="px-1">
@@ -131,12 +143,15 @@
                     <th class="w-2/6 hidden sm:table-cell">/SUPPORT</th>
                     </tr>
                 </thead>
+    
                 <tbody >
-                        {#each sortedProjects["Ongoing"] as project}
+                        {#each sortedProjects["Ongoing"].projects as project}
                         <tr>
+               
                             <td><a href="/projects/{project.slug}">{project.title}</a></td>
                             <td>{project.funding ? project.funding : "none"}</td>
                             <td class="hidden md:table-cell">
+                            {#if project.place }
                                 {#each project.place as place}
                                     {#if place.url }
                                         <a target="_blank" href={place.url}>{place.name}</a>
@@ -144,8 +159,9 @@
                                         {place.name}
                                     {/if}
                                 {/each}
-                                </td>
-                            </tr>
+                            {/if}
+                            </td>
+                        </tr>
                         {/each}
                     </tbody>
                 </table>

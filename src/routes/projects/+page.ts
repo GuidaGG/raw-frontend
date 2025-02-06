@@ -45,6 +45,8 @@ const projectsQuery = gql`
                         attributes {
                           name
                           slug
+                          name_plural
+                          display_venue
                         }
                       }
                     }
