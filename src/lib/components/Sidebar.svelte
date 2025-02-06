@@ -1,20 +1,10 @@
 <script lang="ts">
-    import Search from 'svelte-feathers/Search.svelte';
-    import Arrow from 'svelte-feathers/ArrowRight.svelte';
     import { sortProjects } from '$lib/utils';
-    import { getFilteredValues } from '$lib/utils';
     
     export let hidden: boolean;
     export let data;
 
     const sortedProjects = sortProjects(data)
-
-    const titles = {
-        Event: "/events",
-        Ongoing: "/ongoing",
-        Release: "/releases",
-        Exposition: "/expositions"
-    }
 
     $: searchInput = ""
 </script>
@@ -28,9 +18,9 @@
         </div> -->
     </div>  
     <div class="space-y-10 text-base">
-        {#each Object.entries(sortedProjects) as [type, projects]}
+        {#each Object.entries(sortedProjects) as [type, { display_name, display_venue, projects }]}
             <div>
-                <h3 class="uppercase font-medium">{titles[type]}</h3>
+                <h3 class="uppercase font-medium">/{display_name}</h3>
                 <ul>
                         {#each projects as project}
                         <!-- <pre>{JSON.stringify(project, null,  2)}</pre> -->

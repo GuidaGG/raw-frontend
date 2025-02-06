@@ -97,15 +97,33 @@ export function flattenJson(json: any): any {
           )
     };
 
-  export const sortProjects = (projects: Project[]) => { return projects.reduce((acc: any, project: Project) => {
-      let type = project?.project_type?.name;
-      if (!acc[type]) {
-        acc[type] = [];
-      }
-      acc[type].push(project);
-      return acc;
-    }, {});
-  }
+    export const sortProjects = (projects: Project[]) => {  
+      return projects.reduce((acc: Record<string, {  
+          display_name: string;  
+          display_venue: boolean;  
+          projects: Project[];  
+        }>, project: Project) => {  
+    
+        const type = project?.project_type?.name;  
+        if (!type) return acc; // Skip projects without a valid type  
+    
+        const displayVenue = project?.project_type?.display_venue ?? false; // Default to false if undefined  
+        const displayName = project?.project_type?.name_plural ?? type; // Fallback to type if name_plural is missing  
+    
+        if (!acc[type]) {  
+          acc[type] = {  
+            display_name: displayName,  
+            display_venue: displayVenue,  
+            projects: [],  
+          };  
+        }  
+    
+        acc[type].projects.push(project);  
+    
+        return acc;  
+      }, {});  
+    };
+    
 
   export const getFilteredValues = (array: Project[], key: string) => {
     const uniqueSlugs: Set<string> = new Set();

@@ -4,33 +4,11 @@
     import type { Project } from '$lib/types'
     import { formatDate } from '$lib/utils.js';
     import { getFilteredValues } from '$lib/utils.js';
-    
+    import { sortProjects } from '$lib/utils';
     export let data
 
     const projects = data.content.projects;
-    const sortedProjects: Record<string, { 
-    display_name: string; 
-    display_venue: boolean; 
-    projects: Project[]; 
-}> = projects.reduce((acc: Record<string, any>, project: Project) => {  
-    const type = project?.project_type?.name;  
-    if (!type) return acc; // Skip projects without a valid type  
-
-    const displayVenue = project?.project_type?.display_venue ?? false; // Default to false if undefined  
-    const displayName = project?.project_type?.name_plural ?? type; // Fallback to type if name_plural is missing  
-
-    if (!acc[type]) {  
-        acc[type] = {  
-            display_name: displayName,  
-            display_venue: displayVenue,  
-            projects: [],  
-        };  
-    }  
-
-    acc[type].projects.push(project);  
-
-    return acc;  
-}, {});  
+    const sortedProjects = sortProjects(projects)
 
 
     
