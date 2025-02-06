@@ -153,6 +153,13 @@ export type ProjectCategory = {
     slug:string;
 }
 
+export type ProjectType = {
+    name: string;
+    slug:string;
+    name_plural: string;
+    display_venue: string;
+}
+
 export type Project = {
     title: string;
     subtitle?: string;
@@ -165,7 +172,7 @@ export type Project = {
     place?: Link[]
     links?: Link[]
     project_categories: ProjectCategory[];
-    project_type: ProjectCategory;
+    project_type: ProjectType;
     funding: string;
     audioFiles: AudioFile[];
     endDate?: string;
