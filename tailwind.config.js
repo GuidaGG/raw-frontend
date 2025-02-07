@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
          //'raw-blue': '#5D96FF',
-         'raw-blue': '#2d7aff',
+        'raw-blue': "var(--full-color)",
         // 'raw-blue-light': '#96bcff',
-        'raw-blue-light': '#aec8fc',
+        'raw-blue-light': "var(--light-color)",
         'raw-white': 'white'
       },
       fontFamily: {
