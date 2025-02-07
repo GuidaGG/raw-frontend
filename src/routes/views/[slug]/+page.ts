@@ -128,7 +128,7 @@ const viewsQuery = gql`
 
 const projectsQuery = gql`
      query getProjects{
-        projects{
+        projects(pagination: { limit: -1}){
             data{
                 id
                 attributes{ 
