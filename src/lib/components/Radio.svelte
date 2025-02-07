@@ -35,7 +35,7 @@
         player.load()
     });
 
-    function format(seconds: number | string){
+    function format(seconds: number){
       if (isNaN(seconds)) return '...';
   
       const minutes: number = Math.floor(seconds / 60);
@@ -220,6 +220,6 @@
     }
 
     progress[value]::-webkit-progress-value {
-        background-color: #aec8fc
+        @apply bg-raw-blue-light
     }
 </style> 

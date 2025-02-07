@@ -6,6 +6,7 @@
 	import { page } from "$app/stores";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import {transformTracks } from "$lib/utils";
+	import type { Page } from "@sveltejs/kit";
 
 	export let data;
 
@@ -15,13 +16,14 @@
     	info: data.content.contact
     }
 	let sidebar = data.sidebar.projects;
+	let colors = data.themeColors.theme;
 
     contact.set(contactInfo);
 
-	const isInHomePage = (page): boolean => page.route?.id === "/";
-	const hasViewsSubpath = (page): boolean => page.route?.id === "/views/[slug]";
-	const hideSidebar= (page): boolean => page.route?.id === "/projects" || page.route?.id === "/"  ;
-	const isProject  = (page): boolean => page.route?.id === "/projects/[slug]";
+	const isInHomePage = (page: Page): boolean => page.route?.id === "/";
+	const hasViewsSubpath = (page: Page): boolean => page.route?.id === "/views/[slug]";
+	const hideSidebar = (page: Page): boolean => page.route?.id === "/projects" || page.route?.id === "/";
+	const isProject = (page: Page): boolean => page.route?.id === "/projects/[slug]";
 
 	$: showPlaylist = hasViewsSubpath($page) 
 	$: hide = isInHomePage($page); 
@@ -33,10 +35,29 @@
 
 	 playlist.set(transformedPlaylist)   
 
+	 import { onMount } from 'svelte';
+
+	let fullColor = colors.fullColor;  // Default value
+	let lightColor = colors.lightColor; // Default value
+
+	function fetchColors() {
+
+		// Set CSS variables dynamically
+		document.documentElement.style.setProperty('--full-color', fullColor);
+		document.documentElement.style.setProperty('--light-color', lightColor);
+	}
+
+	onMount(fetchColors);
 </script> 
 
+<style>
+	:root {
+	  --full-color: white;
+	  --light-color: white;
+	}
+  </style>
+
 <div class="app relative">
-	
 	<Header />
 		<main class="min-h-[calc(100vh-144px)]  relative {sidebarHidden ? "w-full" : "md:w-4/5 "}" >
 			
@@ -61,7 +82,7 @@
 		{/if}
 	
 		<div class="md:w-4/5 bg-raw-blue">
-			<Radio {radio} {hide} {showPlaylist} projectOverview={sidebarHidden} />
+			<Radio {hide} projectOverview={sidebarHidden} />
 		</div> 
 	</main>
 	
