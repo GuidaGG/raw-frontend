@@ -21,7 +21,11 @@ export default {
       },
       animation: {
         spin: 'spin 2s linear infinite',
+      },
+      screens: {
+        '3xl': '2560px',
       }
+      
     }
   },
   plugins: [

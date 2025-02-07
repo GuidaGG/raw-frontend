@@ -81,7 +81,7 @@
         <h3 class="text-base uppercase font-medium">Network</h3>
         <div class="flex flex-col sm:flex-row gap-5 md:gap-10 ">
             {#if getFilteredValues(projects, "collaborations").length > 0}
-            <ul class="text-base w-full sm:w-2/6 border-raw-blue border">
+            <ul class="text-base w-full sm:w-3/6  md:w-2/6 border-raw-blue border">
                 <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
                 {#each getFilteredValues(projects, "collaborations") as collab}
                     <li class="px-1">

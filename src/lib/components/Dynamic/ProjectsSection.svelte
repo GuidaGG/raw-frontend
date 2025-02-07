@@ -46,6 +46,8 @@
     const getImage = (project : Project) => {
         return project.featured_image ?? project.images?.[0];
     }
+
+
 </script>
 
 <!-- <pre>{JSON.stringify(listProjects, null, 2)}</pre> -->
@@ -53,18 +55,29 @@
     <div class="relative overflow-hidden ">
         <div class="flex flex-row transition-transform duration-500 ease-in-out overflow-x-auto scroll-smooth no-scrollbar w-auto " bind:this={container}>
             {#each listProjects as project}
-                <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto">
-                    <a href="/projects/{project.slug}" class="bg-pink-400" >
-                         <Image image={getImage(project)} size="large" class="pr-5 md:pr-20 border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
+                <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto relative">
+                    <Image image={getImage(project)} size="large" class="pr-5 md:pr-20 border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
+                    <a href="/projects/{project.slug}" class="absolute bottom-4 right-24 button border-2 text-center shadow-inner transition-all duration-200 shadow-raw-blue sm:px-2 rounded-full text-base uppercase w-full md:max-w-fit inverted bg-raw-blue hover:no-underline border-raw-blue text-raw-white hover:text-raw-blue hover:bg-raw-white" aria-label="Go to project: {project.title}">
+                        <div>Go to Project</div>
                     </a>
                 </div>
             {/each}
             <div class="w-3/4 shrink-0 border-t border-b border-raw-blue"></div>
         </div>
+
+        <div class="absolute top-0 w-full flex h-[40vh] md:h-[60vh]">
+            <button class="w-5/6 md:w-3/4 shrink-0  cursor-pointer"  on:click={before} aria-label="Previous Project">
+            
+            </button>
+            <button class="w-1/6 md:w-1/4 shrink-0 cursor-pointer " on:click={next} aria-label="Next Project">
+            </button>
+        </div>
     </div>
     <div class="p-5 flex wp-full md:justify-between flex-col-reverse md:flex-row gap-5 md:h-48">
         <div class="w-full md:w-3/4 shrink-0 ">
+            <a href="/projects/{active.slug}"  aria-label="Go to project: {active.title}" >
             <h3 class="text-xl pb-0">{active.title}</h3>
+            </a>
             <div class="flex gap-2 text-xs">
                 <span>{getYear(active.date)}</span>
                 <span>|</span>
@@ -86,5 +99,7 @@
             <Arrow class="rotate-180  focus:outline-1 focus:ring-none focus:outline-raw-blue stroke-raw-blue" />
             </button> 
         </div>
+
+     
     </div>
 </div> 

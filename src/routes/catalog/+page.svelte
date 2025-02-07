@@ -54,8 +54,8 @@
                         <div class="">RAW {record.coordinate}</div>
                     </div>  
                   
-                    <a href="#order" class="bg-raw-blue text-white text-center text-base px-2 rounded-full  flex items-center uppercase hover:no-underline max-w-min">order
-                        
+                    <a href="#order" class="button border-2 text-center shadow-inner transition-all duration-200 shadow-raw-blue sm:px-2 rounded-full text-base uppercase w-full md:max-w-fit inverted bg-raw-blue hover:no-underline border-raw-blue text-raw-white hover:text-raw-blue hover:bg-raw-white" aria-label="Jump to Contact Section">
+                        order  
                     </a>
                 </div>
            

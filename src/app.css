@@ -24,22 +24,20 @@
         scrollbar-width: none;  /* Firefox */
     }
     .grainy-gradient {
-        background: linear-gradient(to bottom, white 0%, white 5%, var(--full-color) 40%, white 80%);
+        background: linear-gradient(to bottom, white 0%, white 5%, #669eff 40%, white 80%);
     }
 }
 
 html {
-        font-size:16px;
         font-family: SpaceGrotesk-VariableFont;
         scroll-behavior: smooth;
-        @screen sm {  
-            font-size:18px;
-        }
+        @apply text-base 3xl:text-2xl
     
     }
 
     body {
-        @apply text-raw-blue text-2xl bg-raw-white
+        @apply text-raw-blue  bg-raw-white
+
     }
 
 

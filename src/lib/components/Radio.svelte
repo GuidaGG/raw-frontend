@@ -170,7 +170,7 @@
                         <Pause class="h-8 w-8md:w-6 md:h-6"/>
                     </button>
                 {/if}
-                <button on:click={() => changeIndex(selected-1)} aria-label="Previous Track" class="cursor-pointer">
+                <button on:click={() => changeIndex(selected+1)} aria-label="Previous Track" class="cursor-pointer">
                     <Arrow class="stroke-white rotate-180 w-6 md:h-6"  on:click={() => changeIndex(selected+1)} />
                 </button>
              
@@ -188,7 +188,7 @@
         <progress class="w-full h-3 align-top cursor-pointer border-raw-blue border-b" value={time / duration || 0}  on:click={handleProgressBarClick} aria-label="skip through track"/> 
     </div>
 
-    <div class=" overflow-y-scroll border-b border-raw-blue h-[50vh]">
+    <div class=" overflow-y-scroll border-b border-raw-blue h-[43dvh] no-scrollbar">
             {#each tracks as audio, index }
                 {#if audio.file?.url}
     
