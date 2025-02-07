@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { ContactSection} from "$lib/types";
+    import type { ContactInfo, ContactSection} from "$lib/types";
     import { contact } from "$lib/store";
 
     export let section: ContactSection
     
-    let contactInfo = {}
+    let contactInfo: ContactInfo = {}
     contact.subscribe((value) => {
         contactInfo = value.info
     });
@@ -22,6 +22,12 @@
                 { @html section.subtitle}
             </div>
         {/if}
+
+        {#if contactInfo.intro}
+        <div class="px-5 py-2 prose">
+            { @html contactInfo.intro}
+        </div>
+    {/if}
         <div class="p-5 space-y-10">
             <div>
                 <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>

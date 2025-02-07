@@ -1,3 +1,5 @@
+import type { introspectionFromSchema } from "graphql";
+
 // GENERAL TYPES 
 export type Media = {
     id: number;
@@ -28,6 +30,12 @@ export type Link = {
 export type Download = {
     download_file: Media;
     display_name: string;
+}
+
+export type ContactInfo = {
+    email: string;
+    socialMedia: Link[];    
+    intro: string;
 }
 
 export type JokerSection= {

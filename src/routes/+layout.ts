@@ -15,6 +15,7 @@ const contactQuery = gql`
                         name
                         url
                     }
+                    intro
                 }
             }
         }
