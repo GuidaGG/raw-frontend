@@ -75,7 +75,8 @@ export type GallerySection = {
 export type AudioSection = {
     __typename: string;
     audioFiles: AudioFile[];
-    align: string;
+    alignAudio: string;
+    playlist_content: string;
 }
 
 export type ContactSection = {

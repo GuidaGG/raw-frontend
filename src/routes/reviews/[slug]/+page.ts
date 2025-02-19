@@ -66,7 +66,10 @@ const reviewsQuery = gql`
                           title 
                           subtitle
                         }
+
                         ... on ComponentDynamicAudio {
+                          align
+                          playlist_content
                            tracks {
                             data{
                               id

@@ -1,11 +1,9 @@
 <script lang="ts">
     import Play from 'svelte-feathers/Play.svelte'
     import Pause from 'svelte-feathers/Pause.svelte';
-    import ArrowLeft from 'svelte-feathers/ChevronLeft.svelte';
-    import ArrowRight from 'svelte-feathers/ChevronRight.svelte';
     import ArrowUp from 'svelte-feathers/BarChart2.svelte';
     import { config } from '$lib/config';
-    import type { Project, AudioFile, AudioTrack } from '$lib/types';
+    import type {  AudioTrack } from '$lib/types';
     import Track from './Radio/Track.svelte';
     import { playlist, currentTrack, reload } from '$lib/store';
     import Arrow from './Arrow.svelte';
@@ -188,12 +186,12 @@
         <progress class="w-full h-3 align-top cursor-pointer border-raw-blue border-b" value={time / duration || 0}  on:click={handleProgressBarClick} aria-label="skip through track"/> 
     </div>
 
-    <div class=" overflow-y-scroll border-b border-raw-blue h-[43dvh] no-scrollbar">
+    <div class="overflow-y-scroll border-b border-raw-blue h-[42vh] no-scrollbar">
             {#each tracks as audio, index }
                 {#if audio.file?.url}
     
                 <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light  hover:cursor-pointer  ${index === selected ? 'bg-raw-blue-light ' : 'bg-raw-white'}`}>
-                  <Track {audio} expand />
+                    <Track {audio} expand />
 
                     <div class="flex gap-10 items-center text-base">
                         <div class="flex">
@@ -216,7 +214,7 @@
 
 <style lang="postcss">
     progress[value]::-webkit-progress-bar {
-       @apply bg-raw-white;
+       @apply bg-raw-white 
     }
 
     progress[value]::-webkit-progress-value {

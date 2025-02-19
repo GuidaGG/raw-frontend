@@ -70,6 +70,8 @@ const viewsQuery = gql`
                           subtitle
                         }
                         ... on ComponentDynamicAudio {
+                          alignAudio: align
+                          playlist_content
                            tracks {
                             data{
                               id
