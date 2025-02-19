@@ -77,12 +77,11 @@
 </div>
 
 <style lang="postcss">
-    progress[value]::-webkit-progress-bar {
-        background-color: white;
-        border-bottom: #5D96FF solid 2px
+       progress[value]::-webkit-progress-bar {
+        @apply bg-gray-100;
     }
 
     progress[value]::-webkit-progress-value {
-        background-color: #5D96FF
+        @apply bg-raw-blue;
     }
 </style>

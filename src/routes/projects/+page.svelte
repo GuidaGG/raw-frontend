@@ -5,6 +5,7 @@
     import { formatDate } from '$lib/utils.js';
     import { getFilteredValues } from '$lib/utils.js';
     import { sortProjects } from '$lib/utils';
+    import ExternalLink from 'svelte-feathers/ExternalLink.svelte';
     export let data
 
     const projects = data.content.projects;
@@ -40,7 +41,7 @@
                 
                     <tr>
                         <td class="hidden xl:table-cell">{project.coordinate}</td>
-                        <td><a href="/projects/{project.slug}">{project.title}</a></td>
+                        <td><a href="/projects/{project.slug}" aria-label="Go to {project.title}">{project.title}</a></td>
                         <td >
                         {#each project.project_categories as cat, index}
                         <span class="{index < project.project_categories.length-1 ? "after:content-[','] after:pr-1" : "" }">{cat.name}</span>
@@ -51,7 +52,7 @@
 
                             {#each project.place as place, index}
                                 {#if place.url }
-                                    <a target="_blank" class="{index < project.place.length-1 ? "after:content-[','] after:pr-1" : "" }" href={place.url}>{place.name}</a>
+                                    <a target="_blank" aria-label="Go to website of {place.name}" class="{index < project.place.length-1 ? "after:content-[','] after:pr-1" : "" }" href={place.url}>{place.name}</a>
                                 {:else}
                                     {place.name}
                                 {/if}
@@ -60,7 +61,7 @@
                         
                             </td>
                         {/if}
-                        <td class="hidden md:table-cell">
+                        <td class="hidden md:table-cell" aria-label="Project date">
                             {#if project.date}
                                 {formatDate(project.date)} 
                             {/if}
@@ -82,11 +83,14 @@
         <div class="flex flex-col sm:flex-row gap-5 md:gap-10 ">
             {#if getFilteredValues(projects, "collaborations").length > 0}
             <ul class="text-base w-full sm:w-3/6  md:w-2/6 border-raw-blue border">
-                <li class="uppercase font-medium border-raw-blue border-b p-1">/People</li>
+                <li class="uppercase font-medium border-raw-blue border-b p-1 flex items-center gap-2">/People
+                    <ExternalLink class="h-5" />
+
+                </li>
                 {#each getFilteredValues(projects, "collaborations") as collab}
                     <li class="px-1">
                         {#if collab.url }
-                            <a target="_blank" href={collab.url}>{collab.name}</a>
+                            <a target="_blank" aria-label="Go to website from {collab.name}" href={collab.url}>{collab.name}</a>
                         {:else}
                             {collab.name}
                         {/if}
@@ -96,11 +100,13 @@
             {/if}
             {#if getFilteredValues(projects, "place").length > 0}
                 <ul class="text-base border-raw-blue border h-min">
-                    <li class="uppercase font-medium border-raw-blue border-b p-1">/ORGANIZATIONS</li>
+                    <li class="uppercase font-medium border-raw-blue border-b p-1 flex  items-center gap-2">/ORGANIZATIONS
+                        <ExternalLink class="h-5" />
+                    </li>
                 {#each getFilteredValues(projects, "place") as collab}
                     <li class="px-1">
                         {#if collab.url }
-                            <a target="_blank" href={collab.url}>{collab.name}</a>
+                            <a target="_blank" aria-label="Go to website from {collab.name}" href={collab.url}>{collab.name}</a>
                         {:else}
                             {collab.name}
                         {/if}
