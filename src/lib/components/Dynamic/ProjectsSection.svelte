@@ -57,7 +57,7 @@
             {#each listProjects as project}
                 <div class="w-5/6 md:w-3/4 shrink-0 h-[50vh] md:h-[70vh] overflow-auto relative">
                     <Image image={getImage(project)} size="large" class="pr-5 md:pr-20 border-b border-raw-blue object-cover w-full h-[50vh] md:h-[70vh]" /> 
-                    <a href="/projects/{project.slug}" class="absolute bottom-4 right-24 button border-2 text-center shadow-inner transition-all duration-200 shadow-raw-blue sm:px-2 rounded-full text-base uppercase w-full md:max-w-fit inverted bg-raw-blue hover:no-underline border-raw-blue text-raw-white hover:text-raw-blue hover:bg-raw-white" aria-label="Go to project: {project.title}">
+                    <a href="/projects/{project.slug}" class="absolute bottom-4 right-10 sm:right-24 button border-2 text-center shadow-inner transition-all duration-200 shadow-raw-blue px-2 rounded-full text-base uppercase max-w-fit inverted bg-raw-blue hover:no-underline border-raw-blue text-raw-white hover:text-raw-blue hover:bg-raw-white" aria-label="Go to project: {project.title}">
                         <div>Go to Project</div>
                     </a>
                 </div>

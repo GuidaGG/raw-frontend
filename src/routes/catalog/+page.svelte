@@ -33,7 +33,10 @@
                         <h3 class="text-base 2xl:text-xl">{record.subtitle}</h3>
                     {/if}
                 </a>
-<!--                
+
+                
+                <!--    
+                Not added for now            
                 <div>
                     {#if record.reviews.length}
                     <div class="py-10 space-y-2 ">
@@ -51,7 +54,7 @@
                 <div class="hidden md:flex text-xs gap-2 justify-between items-end" >
                     <div class="flex flex-col">
                         <div>{formatDate(record.date)} </div>
-                        <div class="">RAW {record.coordinate}</div>
+                        <div class="">{record.coordinate}</div>
                     </div>  
                   
                     <a href="#order" class="button border-2 text-center shadow-inner transition-all duration-200 shadow-raw-blue sm:px-2 rounded-full text-base uppercase w-full md:max-w-fit inverted bg-raw-blue hover:no-underline border-raw-blue text-raw-white hover:text-raw-blue hover:bg-raw-white" aria-label="Jump to Contact Section">

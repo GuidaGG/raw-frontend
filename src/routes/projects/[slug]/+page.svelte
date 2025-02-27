@@ -27,7 +27,7 @@
 </script>
 
 <div class="max-w-screen-2xl px-0  md:px-5 md:pl-20 pt-10 pb-16 md:pb-0">
-    <div class="flex flex-col-reverse lg:flex-row w-full cursor-all-scroll ">
+    <div class="flex flex-col-reverse xl:flex-row w-full cursor-all-scroll ">
         {#key project.images}
                 <div class="w-full lg:w-3/6 shrink-0 lg:pr-10 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images} >
                     {#each project.images as media}

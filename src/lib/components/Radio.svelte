@@ -133,7 +133,10 @@
  <div
 
     aria-label="open radio" 
-    class="fixed {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] {isOpen ? 'top-[50vh]' : 'top-[calc(100dvh-6.6rem)] sm:top-[calc(100dvh-4rem)]'}" 
+    class="fixed  z-10
+    {projectOverview ? "w-full" : "w-full md:w-4/5"} bottom-0 bg-raw-blue  mx-auto border-raw-blue  border-t 
+    {hide ? 'hidden' : ''} text-white ease-in-out duration-300 transition-[top] 
+    {isOpen ? 'h-[80dvh] top-[20dvh] md:h-[50dvh] md:top-[50dvh]' : 'top-[calc(100dvh-6.6rem)] sm:top-[calc(100dvh-4rem)]'}" 
     >
   
      <div class="w-full relative flex flex-col md:flex-row justify-between border-b border-raw-blue px-5 py-3 md:items-center">
@@ -152,7 +155,7 @@
             on:ended={() => changeIndex(selected+1)}
         />
         {/key} 
-        <Track audio={currentAudio} invert expand class="pt-2 sm:pt-0 h-16 sm:h-auto overflow-hidden"/>
+        <Track audio={currentAudio} invert expand color="bg-raw-blue" class="pt-2 sm:pt-0 h-16 sm:h-auto overflow-hidden"/>
         <div class="w-full pt-3 sm:pt-0 md:w-auto flex md:flex-row gap-10 text-base justify-between items-center">
             <div class="absolute  px-5 md:px-0  md:h-auto  md:relative flex gap-5 top-3 right-0 md:right-auto md:top-auto items-center">
 
@@ -186,19 +189,20 @@
         <progress class="w-full h-3 align-top cursor-pointer border-raw-blue border-b" value={time / duration || 0}  on:click={handleProgressBarClick} aria-label="skip through track"/> 
     </div>
 
-    <div class="overflow-y-scroll border-b border-raw-blue h-[42vh] no-scrollbar">
+    <div class="overflow-y-scroll border-b border-raw-blue h-[61dvh] md:h-[42.5dvh] no-scrollbar">
             {#each tracks as audio, index }
                 {#if audio.file?.url}
     
-                <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light  hover:cursor-pointer  ${index === selected ? 'bg-raw-blue-light ' : 'bg-raw-white'}`}>
-                    <Track {audio} expand />
+                <div class={`flex justify-between items-center px-5 py-2 text-raw-blue hover:bg-raw-blue-light  hover:cursor-pointer  ${index === selected ? 'bg-raw-blue-light ' : 'bg-raw-white'} relative`}>
+                   
+                    <Track {audio} expand color={index === selected ? "bg-raw-blue-light" : "bg-white hover:bg-raw-blue-light"}/>
 
                     <div class="flex gap-10 items-center text-base">
                         <div class="flex">
                             {#if index === selected && !paused   }
-                                <Pause on:click={() => player.pause() }/>
+                                <Pause on:click={() => player.pause() } class="w-6 md:h-6"/>
                             {:else}
-                                <Play on:click={() => changeIndex(index)}/> 
+                                <Play on:click={() => changeIndex(index)} class="w-6 md:h-6"/> 
                             {/if}
                         </div>
                 
