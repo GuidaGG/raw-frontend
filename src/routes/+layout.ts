@@ -133,13 +133,31 @@ const projectsQuery = gql`
     }
 `
 const themeQuery = gql`
-  query getThemeColors{
+  query getTheme{
     theme{
       data{
         id
         attributes{ 
          fullColor
          lightColor
+         seo {
+          metaTitle
+          metaDescription
+          keywords
+          metaImage {
+            data {
+              id
+              attributes {
+                url
+                formats
+                alternativeText
+                name
+              }
+            }
+    
+          }
+
+         }
         }
       }
     }
@@ -151,12 +169,12 @@ export const load: import('./$types').PageLoad = (async () => {
         const dataGeneral = await client.request(contactQuery);
         const dataRadio = await client.request(RadioQuery);
         const projects =  await client.request(projectsQuery);
-        const themeColors = await client.request(themeQuery);
+        const theme = await client.request(themeQuery);
         return {
             content: flattenJson(dataGeneral),
             radio: flattenJson(dataRadio) ,
             sidebar: flattenJson(projects),
-            themeColors: flattenJson(themeColors)
+            themeOptions: flattenJson(theme)
         }
     } catch (error) {
       console.error('Error fetching data:', error);

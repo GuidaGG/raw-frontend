@@ -7,8 +7,12 @@
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import {transformTracks } from "$lib/utils";
 	import type { Page } from "@sveltejs/kit";
+	import { navigating } from "$app/stores";
+	
+
 
 	export let data;
+
 
 	let currentYear = new Date().getFullYear();
 	let radio = data.radio;
@@ -16,7 +20,8 @@
     	info: data.content.contact
     }
 	let sidebar = data.sidebar.projects;
-	let colors = data.themeColors.theme;
+	let colors = data.themeOptions.theme;
+	let seo = data.themeOptions?.theme?.seo[0] ?? {metaTitle: "Research and Waves", metaDescription: "Research and Waves is a platform for artistic research and practice in the field of sound and radio art."};
 
     contact.set(contactInfo);
 
@@ -36,6 +41,7 @@
 	 playlist.set(transformedPlaylist)   
 
 	 import { onMount } from 'svelte';
+  import Seo from "$lib/components/SEO.svelte";
 
 	let fullColor = colors.fullColor;  // Default value
 	let lightColor = colors.lightColor; // Default value
@@ -57,10 +63,17 @@
 	}
   </style>
 
+<!-- There is a specific SEO on the projects pages -->
+
+{#if (!$page.url.pathname.includes('projects')) }
+<Seo {seo} />
+{/if}
+
 <div class="app relative">
+
 	<Header />
 		<main class="min-h-[calc(100vh-144px)]  relative {sidebarHidden ? "w-full" : "md:w-4/5 "}" >
-			
+
 		<slot />
 		{#if !hideFooter}
 		<footer class="text-raw-blue px-5 py-3 md:py-5 {hide  ? "mb-0" : " mb-14"}  ">

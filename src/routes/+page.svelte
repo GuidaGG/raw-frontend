@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button
-	 from '$lib/components/Button.svelte';
+	from '$lib/components/Button.svelte';
 	export let data
 	import Page from '$lib/components/Page.svelte';
 /* 	import { currentView } from '$lib/store.js'; */
@@ -10,11 +10,6 @@
 /* 	currentView.set({title: '', url: ''}); */
 
 </script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
 
 <Page class="!min-h-[calc(100vh-3.8rem)]">
 	<div class="pb-10 max-w-screen-xl mx-auto ">

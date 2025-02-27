@@ -190,3 +190,10 @@ export type Project = {
     featured_image: Media[];
 
 }
+
+export type SEO = {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string;
+    metaImage: Media;
+}
