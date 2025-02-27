@@ -32,7 +32,7 @@
 html {
         font-family: SpaceGrotesk-VariableFont;
         scroll-behavior: smooth;
-        @apply text-base 3xl:text-2xl
+        @apply text-base 3xl:text-xl 4xl:text-3xl 5xl:text-4xl
     
     }
 
@@ -41,6 +41,10 @@ html {
 
     }
 
+    .fade {
+        mask-image: linear-gradient(90deg, transparent 80%, white);
+        -webkit-mask-image: linear-gradient(90deg, transparent 80%, white);
+    }
 
     h1, h2, h3, h4, h5 {
         @apply font-medium pb-2 
@@ -60,7 +64,7 @@ html {
     p {
         font-family: Inter-VariableFont;
     }
-    .prose, .prose strong {
+    .prose, .prose strong, strong, .prose blockquote {
         @apply text-raw-blue prose-headings:text-raw-blue prose-headings:font-normal prose-headings:mt-0 prose-headings:pb-0 prose-p:pb-0  prose-a:text-raw-blue 
     }
 

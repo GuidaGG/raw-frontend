@@ -23,7 +23,9 @@ export default {
         spin: 'spin 2s linear infinite',
       },
       screens: {
-        '3xl': '2560px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+        '5xl': '3840px',
       }
       
     }

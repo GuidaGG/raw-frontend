@@ -1,7 +1,6 @@
 <script lang="ts">
     import Contact from '$lib/components/Dynamic/Contact.svelte';
     import Page from '$lib/components/Page.svelte';
-    import type { Project } from '$lib/types'
     import { formatDate } from '$lib/utils.js';
     import { getFilteredValues } from '$lib/utils.js';
     import { sortProjects } from '$lib/utils';
@@ -29,7 +28,7 @@
                     <tr class="uppercase ">
                     <th class="w-1/6 hidden xl:table-cell ">/COORDINATE</th>
                     <th class="w-3/5 sm:w-2/6">/TITLE</th>
-                    <th class="w-1/6 ">/CATEGORY</th>
+                    <th class="w-2/5 sm:w-1/6 ">/CATEGORY</th>
                     {#if display_venue }
                         <th class="w-1/6 hidden lg:table-cell">/VENUE</th>
                     {/if}
