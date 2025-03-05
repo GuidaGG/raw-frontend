@@ -35,11 +35,13 @@
         {#key project.images}
                 <div class="w-full lg:w-3/6 shrink-0 lg:pr-10 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images} >
                     {#each project.images as media}
+                    <div class="bg-raw-blue-light">
                             {#if media.formats}
                                 <Image size="large" image={media} />
                             {:else}
                                 <Video video={media} />
                             {/if}
+                    </div>
                     {/each}
                 </div>
         {/key}

@@ -7,8 +7,7 @@
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import {transformTracks } from "$lib/utils";
 	import type { Page } from "@sveltejs/kit";
-	import { navigating } from "$app/stores";
-	
+	import Seo from "$lib/components/SEO.svelte";
 
 
 	export let data;
@@ -37,13 +36,10 @@
 
 	
     const transformedPlaylist = radio?.tracks ? transformTracks([radio]) : [];   
+	playlist.set(transformedPlaylist)   
 
-	 playlist.set(transformedPlaylist)   
 
-	 import { onMount } from 'svelte';
-  import Seo from "$lib/components/SEO.svelte";
-
-	let fullColor = colors.fullColor;  // Default value
+/* 	let fullColor = colors.fullColor;  // Default value
 	let lightColor = colors.lightColor; // Default value
 
 	function fetchColors() {
@@ -53,19 +49,12 @@
 		document.documentElement.style.setProperty('--light-color', lightColor);
 	}
 
-	onMount(fetchColors);
+	onMount(fetchColors); */
 </script> 
-
-<style>
-	:root {
-	  --full-color: white;
-	  --light-color: white;
-	}
-  </style>
 
 <!-- There is a specific SEO on the projects pages -->
 
-{#if (!$page.url.pathname.includes('projects')) }
+{#if (!$page.url.pathname.includes('projects/')) }
 <Seo {seo} />
 {/if}
 
@@ -81,14 +70,16 @@
 			<div class="w-full text-right ">
 			
 
-				<nav class="list-none flex gap-2 text-sm ">
-					<li >
-						<a  href="/legal-notice">legal notice</a>
-					</li>
-					<li>|</li>
-					<li>
-						<a   href="/privacy-policy">privacy policy</a>
-					</li>
+				<nav >
+					<menu class="list-none flex gap-2 text-sm ">
+						<li >
+							<a  href="/legal-notice">legal notice</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a   href="/privacy-policy">privacy policy</a>
+						</li>
+					</menu>
 				</nav>
 			</div>
 		</footer>

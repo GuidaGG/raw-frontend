@@ -8,7 +8,7 @@
 	import ShoppingBag from 'svelte-feathers/ShoppingBag.svelte';
 	import { page } from "$app/stores";
 
-	let buttonView = {}
+	let buttonView = { title: '', url: '' };
 	
 	currentView.subscribe((value) => {
 		buttonView.title = value.title;
@@ -25,7 +25,7 @@
 
 <header class="fixed w-full top-0 z-10 bg-gradient-to-b from-raw-white 30% via-raw-white text-base md:text-xl">
 	<div class="flex md:grid justify-between grid-cols-3 items-center h-24  md:h-32 px-2 w-full ">
-		<div class="max-w-24  sm:max-w-40"><a href={`/views/${buttonView.url}`}><Logo class="min-w-24 fill-raw-blue stroke-raw-blue hover:animate-spin"  /></a></div>	
+		<div class="max-w-24  sm:max-w-40"><a href={`/views/${buttonView.url}`} aria-label="Go to your view"><Logo class="min-w-24 fill-raw-blue stroke-raw-blue hover:animate-spin"  /></a></div>	
 
 		<div class="block md:place-self-center">
 	
@@ -39,7 +39,8 @@
 					</Button>
 				{/if}
 		</div>
-		<nav class=" sm:w-auto md:ml-auto list-none flex gap-1 justify-end md:justify-between items-center">
+		<nav class="justify-end  sm:w-auto md:ml-auto" >
+			<menu class=" list-none flex gap-1 justify-end md:justify-between items-center">
 			<li class=" ">
 				<a href="/projects" class="h-4" >
 					<div class="rounded-full p-2 stroke-white transition-all {currentPage === "/projects" ? active : ""}">
@@ -65,7 +66,7 @@
 					</div>
 				</a>
 			</li> -->
-
+			</menu>
 		</nav>
 	</div>
 </header>

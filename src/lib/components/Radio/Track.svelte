@@ -11,9 +11,9 @@ export let color: string = "bg-white"
 
 <div class="block md:flex w-full items-center max-w-[80%] overflow-clip  text-left {$$restProps.class} relative" >
     <div class="fade sm:hidden w-[108%] absolute z-[1] h-8 top-0 {color}"></div>
-    <h4 class="  pb-0 font-normal text-nowrap relative">{audio.title}
+    <div class="  pb-0 font-normal text-nowrap relative">{audio.title}
         
-    </h4>
+    </div>
 
     <div class="text-xs text-nowrap flex items-center">
         {#if expand}

@@ -138,8 +138,6 @@ const themeQuery = gql`
       data{
         id
         attributes{ 
-         fullColor
-         lightColor
          seo {
           metaTitle
           metaDescription

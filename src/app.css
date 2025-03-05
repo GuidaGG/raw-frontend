@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,12 +8,15 @@
 @font-face {
 	font-family: 'SpaceGrotesk-VariableFont';
 	src: url("./lib/fonts/SpaceGrotesk-VariableFont_wght.ttf");
+    font-display: swap;
 }
 
 @font-face {
 	font-family: 'Inter-VariableFont';
 	src: url("./lib/fonts/Inter-VariableFont_wght.ttf");
+    font-display: swap;
 }
+
 
 
 @layer utilities {
