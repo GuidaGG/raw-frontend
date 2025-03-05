@@ -6,7 +6,7 @@ import { flattenJson } from '$lib/utils';
 
 const projectsQuery = gql`
      query getProjects{
-        projects (filters: {project_categories: {slug: {eq: "vinyl-record"}}}) {
+        projects (sort: "date:desc", filters: {project_categories: {slug: {eq: "vinyl-record"}}}) {
             data{
                 id
                 attributes{ 

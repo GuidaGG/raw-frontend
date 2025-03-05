@@ -19,10 +19,10 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 pb-20">
     {#each records as record}
        <div class=" aspect-square border border-raw-blue relative overflow-hidden">
-            <div class="bg-blue-200 w-full h-full bg-raw-blue-light" >
+            <div class="w-full h-full bg-raw-blue-light" >
                 {#if record.images || record.featured_image}
                 <a href="/projects/{record.slug}">
-                <Image size="large" class="w-full h-full" image={getImage(record)} />
+                <Image size="medium" class="w-full h-full" image={getImage(record)} />
                 </a>
                 {/if}
             </div>

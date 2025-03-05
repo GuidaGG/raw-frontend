@@ -4,8 +4,9 @@
     import { formatDate } from '$lib/utils.js';
     import { transformTracksProject } from '$lib/utils.js';
     import AudioTrack from '$lib/components/Dynamic/AudioTrack.svelte';
-  import Video from '$lib/components/Video.svelte';
-  import Download from '$lib/components/Download.svelte';
+    import Video from '$lib/components/Video.svelte';
+    import Download from '$lib/components/Download.svelte';
+    import SEO from '$lib/components/SEO.svelte';
 
     export let data;
 
@@ -13,6 +14,7 @@
 
     $: project = data.content?.projects[0];
     $: reviews = data.projectReviews?.reviews;
+    $: seo = data.content?.projects[0]?.seo[0] ?? {metaTitle: project.title, metaDescription: project.description};
 
     function scroll(event: Event){
         const { scrollTop, scrollHeight, clientHeight } = event.target;
@@ -26,16 +28,20 @@
         
 </script>
 
+<SEO {seo} />
+
 <div class="max-w-screen-2xl px-0  md:px-5 md:pl-20 pt-10 pb-16 md:pb-0">
     <div class="flex flex-col-reverse xl:flex-row w-full cursor-all-scroll ">
         {#key project.images}
                 <div class="w-full lg:w-3/6 shrink-0 lg:pr-10 pb-10  lg:max-h-[calc(100vh-3.8rem)] overflow-y-scroll pt-24 md:pt-40 no-scrollbar" bind:this={images} >
                     {#each project.images as media}
+                    <div class="bg-raw-blue-light">
                             {#if media.formats}
                                 <Image size="large" image={media} />
                             {:else}
                                 <Video video={media} />
                             {/if}
+                    </div>
                     {/each}
                 </div>
         {/key}

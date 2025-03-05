@@ -132,6 +132,23 @@ const projectsQuery = gql`
                       }
                     }
                   }
+                  seo {
+                      metaTitle
+                      metaDescription
+                      keywords
+                      metaImage {
+                        data {
+                          id
+                          attributes {
+                            url
+                            formats
+                            alternativeText
+                            name
+                          }
+                        }
+                      }
+
+                    }
                 }
             }
         }
